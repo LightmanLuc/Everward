@@ -1,0 +1,6846 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="theme-color" content="#f5f6f0">  
+  
+<title>Everward — Keep moving forward.</title>  
+  
+<style>  
+/* =========================================================  
+   EVERWARD  
+   ========================================================= */  
+  
+:root {  
+    --bg: #f6f6f0;  
+    --surface: rgba(255,255,255,.94);  
+    --surface-solid: #ffffff;  
+  
+    --text: #17221b;  
+    --muted: #748078;  
+  
+    --green: #2f835b;  
+    --green-dark: #174e38;  
+    --green-deep: #103d2c;  
+    --green-soft: #e7f2eb;  
+    --green-pale: #f0f6f2;  
+  
+    --red: #d45a5a;  
+    --red-dark: #a94040;  
+    --red-soft: #fff0f0;  
+  
+    --gold: #a47b1c;  
+    --gold-soft: #fff7da;  
+  
+    --border: #e1e8e3;  
+  
+    --shadow:  
+        0 18px 55px rgba(27, 61, 41, .09);  
+  
+    --radius: 22px;  
+}  
+  
+* {  
+    box-sizing: border-box;  
+}  
+  
+html {  
+    -webkit-font-smoothing: antialiased;  
+}  
+  
+body {  
+    margin: 0;  
+  
+    min-height: 100vh;  
+  
+    color: var(--text);  
+  
+    font-family:  
+        Inter,  
+        -apple-system,  
+        BlinkMacSystemFont,  
+        "Segoe UI",  
+        Roboto,  
+        Helvetica,  
+        Arial,  
+        sans-serif;  
+  
+    background:  
+        radial-gradient(  
+            circle at 0% 0%,  
+            rgba(190, 226, 202, .50),  
+            transparent 28%  
+        ),  
+        radial-gradient(  
+            circle at 100% 100%,  
+            rgba(224, 235, 211, .55),  
+            transparent 30%  
+        ),  
+        var(--bg);  
+}  
+  
+button,  
+input,  
+select {  
+    font: inherit;  
+}  
+  
+button {  
+    cursor: pointer;  
+}  
+  
+.hidden {  
+    display: none !important;  
+}  
+  
+  
+/* =========================================================  
+   HEADER  
+   ========================================================= */  
+  
+.header {  
+    width: min(1100px, calc(100% - 36px));  
+  
+    min-height: 84px;  
+  
+    margin: auto;  
+  
+    display: flex;  
+    align-items: center;  
+    justify-content: space-between;  
+  
+    gap: 20px;  
+}  
+  
+.brand {  
+    display: flex;  
+    align-items: center;  
+  
+    gap: 12px;  
+  
+    cursor: pointer;  
+  
+    user-select: none;  
+}  
+  
+.logo {  
+    width: 42px;  
+    height: 42px;  
+  
+    flex: 0 0 42px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 13px;  
+  
+    color: white;  
+  
+    background:  
+        linear-gradient(  
+            145deg,  
+            #399266,  
+            #216a49  
+        );  
+  
+    box-shadow:  
+        0 9px 24px  
+        rgba(38, 116, 79, .22);  
+}  
+  
+.logo svg {  
+    width: 25px;  
+    height: 25px;  
+}  
+  
+.brand-copy {  
+    display: flex;  
+    flex-direction: column;  
+  
+    line-height: 1.1;  
+}  
+  
+.brand-name {  
+    font-size: 19px;  
+    font-weight: 780;  
+  
+    letter-spacing: -.4px;  
+}  
+  
+.brand-slogan {  
+    margin-top: 5px;  
+  
+    color: var(--muted);  
+  
+    font-size: 10px;  
+  
+    letter-spacing: .4px;  
+}  
+  
+  
+/* =========================================================  
+   MAIN  
+   ========================================================= */  
+  
+.main {  
+    width: min(1050px, calc(100% - 36px));  
+  
+    margin:  
+        34px auto 80px;  
+}  
+  
+  
+/* =========================================================  
+   COMMON  
+   ========================================================= */  
+  
+.btn {  
+    border: 0;  
+  
+    padding:  
+        12px 18px;  
+  
+    border-radius: 12px;  
+  
+    font-weight: 680;  
+  
+    transition:  
+        transform .15s ease,  
+        box-shadow .15s ease,  
+        background .15s ease;  
+}  
+  
+.btn:hover {  
+    transform: translateY(-1px);  
+}  
+  
+.btn-primary {  
+    color: white;  
+  
+    background:  
+        linear-gradient(  
+            135deg,  
+            #398f64,  
+            #276f4d  
+        );  
+  
+    box-shadow:  
+        0 8px 20px  
+        rgba(49,132,91,.18);  
+}  
+  
+.btn-secondary {  
+    color: var(--text);  
+  
+    background: white;  
+  
+    border:  
+        1px solid var(--border);  
+}  
+  
+.btn-danger {  
+    color: var(--red-dark);  
+  
+    background: var(--red-soft);  
+  
+    border:  
+        1px solid #ffd9d9;  
+}  
+  
+.btn-full {  
+    width: 100%;  
+}  
+  
+.small-label {  
+    display: block;  
+  
+    color: var(--muted);  
+  
+    font-size: 10px;  
+    font-weight: 760;  
+  
+    letter-spacing: 1.1px;  
+  
+    text-transform: uppercase;  
+}  
+  
+.card {  
+    background: var(--surface);  
+  
+    border:  
+        1px solid rgba(255,255,255,.9);  
+  
+    border-radius: var(--radius);  
+  
+    box-shadow: var(--shadow);  
+  
+    backdrop-filter: blur(18px);  
+}  
+  
+.badge {  
+    display: inline-flex;  
+  
+    padding:  
+        6px 10px;  
+  
+    border-radius: 100px;  
+  
+    color: var(--green);  
+  
+    background: var(--green-soft);  
+  
+    font-size: 10px;  
+    font-weight: 760;  
+  
+    letter-spacing: .7px;  
+  
+    text-transform: uppercase;  
+}  
+  
+.badge.stopped {  
+    color: var(--red-dark);  
+  
+    background: var(--red-soft);  
+}  
+  
+  
+/* =========================================================  
+   EMPTY  
+   ========================================================= */  
+  
+.empty {  
+    min-height: 65vh;  
+  
+    display: flex;  
+    flex-direction: column;  
+  
+    align-items: center;  
+    justify-content: center;  
+  
+    text-align: center;  
+}  
+  
+.empty-logo {  
+    width: 90px;  
+    height: 90px;  
+  
+    margin-bottom: 23px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 27px;  
+  
+    color: white;  
+  
+    background:  
+        linear-gradient(  
+            145deg,  
+            #399266,  
+            #216a49  
+        );  
+  
+    box-shadow:  
+        0 16px 40px  
+        rgba(38,116,79,.20);  
+}  
+  
+.empty-logo svg {  
+    width: 52px;  
+    height: 52px;  
+}  
+  
+.empty h1 {  
+    margin: 0;  
+  
+    max-width: 650px;  
+  
+    font-size:  
+        clamp(33px, 6vw, 50px);  
+  
+    line-height: 1.08;  
+  
+    letter-spacing: -2px;  
+}  
+  
+.empty p {  
+    max-width: 520px;  
+  
+    margin:  
+        17px auto 28px;  
+  
+    color: var(--muted);  
+  
+    font-size: 16px;  
+    line-height: 1.7;  
+}  
+  
+  
+/* =========================================================  
+   DASHBOARD  
+   ========================================================= */  
+  
+.dashboard-header {  
+    display: flex;  
+  
+    align-items: flex-end;  
+    justify-content: space-between;  
+  
+    gap: 20px;  
+  
+    margin-bottom: 28px;  
+}  
+  
+.dashboard-header h1 {  
+    margin:  
+        5px 0 6px;  
+  
+    font-size:  
+        clamp(33px, 5vw, 47px);  
+  
+    letter-spacing: -1.8px;  
+}  
+  
+.dashboard-header p {  
+    margin: 0;  
+  
+    color: var(--muted);  
+}  
+  
+.habits-grid {  
+    display: grid;  
+  
+    grid-template-columns:  
+        repeat(2, 1fr);  
+  
+    gap: 18px;  
+}  
+  
+.habit-preview {  
+    position: relative;  
+  
+    min-height: 250px;  
+  
+    padding: 25px;  
+  
+    overflow: hidden;  
+  
+    cursor: pointer;  
+  
+    background:  
+        rgba(255,255,255,.94);  
+  
+    border:  
+        1px solid rgba(255,255,255,.9);  
+  
+    border-radius: var(--radius);  
+  
+    box-shadow: var(--shadow);  
+  
+    transition:  
+        transform .2s ease,  
+        box-shadow .2s ease;  
+}  
+  
+.habit-preview:hover {  
+    transform:  
+        translateY(-3px);  
+  
+    box-shadow:  
+        0 23px 65px  
+        rgba(33,67,46,.13);  
+}  
+  
+.habit-preview::after {  
+    content: "";  
+  
+    position: absolute;  
+  
+    width: 150px;  
+    height: 150px;  
+  
+    right: -55px;  
+    bottom: -65px;  
+  
+    border-radius: 50%;  
+  
+    background:  
+        var(--green-soft);  
+  
+    opacity: .75;  
+}  
+  
+.preview-top {  
+    position: relative;  
+  
+    z-index: 1;  
+}  
+  
+.preview-title {  
+    margin:  
+        10px 0 5px;  
+  
+    font-size: 23px;  
+  
+    letter-spacing: -.7px;  
+  
+    overflow-wrap: anywhere;  
+}  
+  
+.preview-started {  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+.preview-days {  
+    position: relative;  
+  
+    z-index: 1;  
+  
+    margin-top: 29px;  
+}  
+  
+.preview-days strong {  
+    display: block;  
+  
+    font-size: 43px;  
+  
+    line-height: 1;  
+  
+    letter-spacing: -2px;  
+}  
+  
+.preview-days span {  
+    display: block;  
+  
+    margin-top: 7px;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+.preview-bottom {  
+    position: relative;  
+  
+    z-index: 1;  
+  
+    margin-top: 22px;  
+  
+    display: flex;  
+    align-items: center;  
+    justify-content: space-between;  
+  
+    gap: 15px;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+.preview-bottom span:last-child {  
+    white-space: nowrap;  
+}  
+  
+.add-card {  
+    min-height: 250px;  
+  
+    display: flex;  
+    flex-direction: column;  
+  
+    align-items: center;  
+    justify-content: center;  
+  
+    text-align: center;  
+  
+    color: var(--muted);  
+  
+    border:  
+        2px dashed #cbd9cf;  
+  
+    border-radius: var(--radius);  
+  
+    cursor: pointer;  
+  
+    transition: .2s ease;  
+}  
+  
+.add-card:hover {  
+    color: var(--green);  
+  
+    border-color:  
+        var(--green);  
+  
+    background:  
+        rgba(255,255,255,.45);  
+}  
+  
+.add-circle {  
+    width: 52px;  
+    height: 52px;  
+  
+    margin-bottom: 12px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 50%;  
+  
+    color: var(--green);  
+  
+    background: var(--green-soft);  
+  
+    font-size: 28px;  
+}  
+  
+  
+/* =========================================================  
+   DETAIL  
+   ========================================================= */  
+  
+.detail-wrap {  
+    width: min(850px, 100%);  
+  
+    margin: auto;  
+}  
+  
+.back-button {  
+    margin-bottom: 17px;  
+  
+    padding: 0;  
+  
+    display: inline-flex;  
+    align-items: center;  
+  
+    gap: 7px;  
+  
+    color: var(--muted);  
+  
+    border: 0;  
+  
+    background: transparent;  
+  
+    font-weight: 650;  
+}  
+  
+.back-button:hover {  
+    color: var(--green);  
+}  
+  
+.detail-card {  
+    padding: 34px;  
+}  
+  
+.detail-header {  
+    display: flex;  
+  
+    align-items: flex-start;  
+    justify-content: space-between;  
+  
+    gap: 20px;  
+}  
+  
+.detail-title {  
+    margin:  
+        11px 0 7px;  
+  
+    font-size:  
+        clamp(29px, 5vw, 40px);  
+  
+    letter-spacing: -1.4px;  
+  
+    overflow-wrap: anywhere;  
+}  
+  
+.started {  
+    margin: 0;  
+  
+    color: var(--muted);  
+}  
+  
+.delete-icon {  
+    width: 42px;  
+    height: 42px;  
+  
+    flex: 0 0 42px;  
+  
+    border: 0;  
+  
+    border-radius: 12px;  
+  
+    color: var(--muted);  
+  
+    background: #f6f8f6;  
+  
+    font-size: 22px;  
+}  
+  
+  
+/* =========================================================  
+   TIMER  
+   ========================================================= */  
+  
+.timer {  
+    margin:  
+        30px 0 22px;  
+  
+    display: grid;  
+  
+    grid-template-columns:  
+        repeat(4, 1fr);  
+  
+    gap: 10px;  
+}  
+  
+.time-box {  
+    padding:  
+        22px 8px;  
+  
+    text-align: center;  
+  
+    border-radius: 17px;  
+  
+    background:  
+        linear-gradient(  
+            180deg,  
+            #fafcfb,  
+            #f0f5f1  
+        );  
+}  
+  
+.time-box strong {  
+    display: block;  
+  
+    font-size:  
+        clamp(27px, 5vw, 39px);  
+  
+    line-height: 1;  
+  
+    letter-spacing: -1px;  
+}  
+  
+.time-box span {  
+    display: block;  
+  
+    margin-top: 8px;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+  
+/* =========================================================  
+   MILESTONE AREA  
+   ========================================================= */  
+  
+.milestone-panel {  
+    padding: 21px;  
+  
+    border:  
+        1px solid var(--border);  
+  
+    border-radius: 18px;  
+  
+    background: white;  
+}  
+  
+.milestone-head {  
+    display: flex;  
+  
+    align-items: flex-end;  
+    justify-content: space-between;  
+  
+    gap: 15px;  
+}  
+  
+.milestone-head h3 {  
+    margin:  
+        5px 0 0;  
+  
+    font-size: 19px;  
+}  
+  
+.goal-percent {  
+    color: var(--green);  
+  
+    font-size: 13px;  
+    font-weight: 730;  
+}  
+  
+.progress-track {  
+    height: 10px;  
+  
+    margin:  
+        17px 0 10px;  
+  
+    overflow: hidden;  
+  
+    border-radius: 100px;  
+  
+    background: #edf1ee;  
+}  
+  
+.progress-bar {  
+    width: 0%;  
+    height: 100%;  
+  
+    border-radius: inherit;  
+  
+    background:  
+        linear-gradient(  
+            90deg,  
+            #58ab7a,  
+            #31845b  
+        );  
+  
+    transition:  
+        width .4s ease;  
+}  
+  
+.progress-info {  
+    display: flex;  
+  
+    justify-content: space-between;  
+  
+    gap: 12px;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+.milestone-count {  
+    margin-top: 16px;  
+  
+    padding-top: 15px;  
+  
+    border-top:  
+        1px solid var(--border);  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+.no-goal {  
+    padding: 20px;  
+  
+    display: flex;  
+    align-items: center;  
+  
+    gap: 15px;  
+  
+    border:  
+        1px solid var(--border);  
+  
+    border-radius: 17px;  
+  
+    background: white;  
+}  
+  
+.infinity {  
+    width: 47px;  
+    height: 47px;  
+  
+    flex: 0 0 47px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 14px;  
+  
+    color: var(--green);  
+  
+    background: var(--green-soft);  
+  
+    font-size: 27px;  
+}  
+  
+.no-goal p {  
+    margin:  
+        5px 0 0;  
+  
+    color: var(--muted);  
+  
+    font-size: 13px;  
+}  
+  
+  
+/* =========================================================  
+   STOPPED  
+   ========================================================= */  
+  
+.stopped-box {  
+    margin-top: 18px;  
+  
+    padding:  
+        18px 19px;  
+  
+    color: var(--red-dark);  
+  
+    background: var(--red-soft);  
+  
+    border-radius: 16px;  
+  
+    border:  
+        1px solid #ffdddd;  
+}  
+  
+.stopped-box strong {  
+    display: block;  
+}  
+  
+.stopped-box p {  
+    margin:  
+        5px 0 0;  
+  
+    font-size: 12px;  
+}  
+  
+.actions {  
+    margin-top: 20px;  
+  
+    display: grid;  
+  
+    grid-template-columns:  
+        1fr 1fr;  
+  
+    gap: 10px;  
+}  
+  
+.quote {  
+    padding:  
+        27px 10px 2px;  
+  
+    text-align: center;  
+  
+    color: #707c73;  
+  
+    font:  
+        italic 17px  
+        Georgia,  
+        serif;  
+}  
+  
+  
+/* =========================================================  
+   TIMELINE / HISTORY  
+   ========================================================= */  
+  
+.history-card {  
+    margin-top: 20px;  
+  
+    padding:  
+        28px 34px;  
+}  
+  
+.history-card h2 {  
+    margin:  
+        5px 0 5px;  
+}  
+  
+.history-subtitle {  
+    margin:  
+        0 0 22px;  
+  
+    color: var(--muted);  
+  
+    font-size: 13px;  
+}  
+  
+.timeline-group {  
+    position: relative;  
+  
+    margin-top: 22px;  
+  
+    padding:  
+        20px;  
+  
+    border:  
+        1px solid var(--border);  
+  
+    border-radius: 17px;  
+  
+    background:  
+        rgba(255,255,255,.7);  
+}  
+  
+.timeline-group.current {  
+    border-color:  
+        rgba(49,132,91,.28);  
+  
+    background:  
+        linear-gradient(  
+            180deg,  
+            #fbfdfb,  
+            #f5faf7  
+        );  
+}  
+  
+.timeline-header {  
+    display: flex;  
+  
+    align-items: flex-start;  
+    justify-content: space-between;  
+  
+    gap: 15px;  
+  
+    margin-bottom: 13px;  
+}  
+  
+.timeline-header h3 {  
+    margin:  
+        4px 0 0;  
+  
+    font-size: 16px;  
+}  
+  
+.timeline-date {  
+    color: var(--muted);  
+  
+    font-size: 11px;  
+  
+    text-align: right;  
+}  
+  
+.history-item {  
+    display: flex;  
+  
+    gap: 14px;  
+  
+    padding:  
+        14px 0;  
+}  
+  
+.history-item:not(:last-child) {  
+    border-bottom:  
+        1px solid var(--border);  
+}  
+  
+.history-icon {  
+    width: 35px;  
+    height: 35px;  
+  
+    flex: 0 0 35px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 50%;  
+  
+    color: var(--green);  
+  
+    background: var(--green-soft);  
+  
+    font-size: 12px;  
+    font-weight: 700;  
+}  
+  
+.history-icon.goal {  
+    color: var(--gold);  
+  
+    background: var(--gold-soft);  
+}  
+  
+.history-icon.stop {  
+    color: var(--red);  
+  
+    background: var(--red-soft);  
+}  
+  
+.history-icon.restart {  
+    color: var(--green-dark);  
+  
+    background: #dceee4;  
+}  
+  
+.history-content {  
+    min-width: 0;  
+}  
+  
+.history-content strong {  
+    display: block;  
+  
+    overflow-wrap: anywhere;  
+}  
+  
+.history-content span {  
+    display: block;  
+  
+    margin-top: 4px;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+}  
+  
+  
+/* =========================================================  
+   MODALS  
+   ========================================================= */  
+  
+.overlay {  
+    position: fixed;  
+  
+    inset: 0;  
+  
+    z-index: 1000;  
+  
+    padding: 20px;  
+  
+    display: flex;  
+  
+    align-items: center;  
+    justify-content: center;  
+  
+    background:  
+        rgba(15,29,20,.52);  
+  
+    backdrop-filter:  
+        blur(7px);  
+}  
+  
+.modal {  
+    width: min(590px, 100%);  
+  
+    max-height:  
+        calc(100vh - 40px);  
+  
+    overflow-y: auto;  
+  
+    padding: 29px;  
+  
+    border-radius: 24px;  
+  
+    background: white;  
+  
+    box-shadow:  
+        0 30px 90px  
+        rgba(0,0,0,.23);  
+  
+    animation:  
+        modalIn .2s ease;  
+}  
+  
+@keyframes modalIn {  
+  
+    from {  
+        opacity: 0;  
+  
+        transform:  
+            translateY(10px)  
+            scale(.98);  
+    }  
+  
+    to {  
+        opacity: 1;  
+  
+        transform: none;  
+    }  
+  
+}  
+  
+.modal-header {  
+    display: flex;  
+  
+    align-items: flex-start;  
+    justify-content: space-between;  
+  
+    gap: 15px;  
+  
+    margin-bottom: 24px;  
+}  
+  
+.modal-header h2 {  
+    margin:  
+        5px 0 0;  
+}  
+  
+.close {  
+    width: 38px;  
+    height: 38px;  
+  
+    flex: 0 0 38px;  
+  
+    border: 0;  
+  
+    border-radius: 50%;  
+  
+    color: var(--muted);  
+  
+    background: #f4f6f4;  
+  
+    font-size: 21px;  
+}  
+  
+.field {  
+    margin-bottom: 18px;  
+}  
+  
+.field label {  
+    display: block;  
+  
+    margin-bottom: 8px;  
+  
+    font-size: 13px;  
+    font-weight: 650;  
+}  
+  
+.field-note {  
+    margin:  
+        -2px 0 9px;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+    line-height: 1.5;  
+}  
+  
+input,  
+select {  
+    width: 100%;  
+  
+    padding:  
+        14px 15px;  
+  
+    color: var(--text);  
+  
+    border:  
+        1px solid #dce4de;  
+  
+    border-radius: 12px;  
+  
+    outline: none;  
+  
+    background: white;  
+}  
+  
+input:focus,  
+select:focus {  
+    border-color:  
+        var(--green);  
+  
+    box-shadow:  
+        0 0 0 3px  
+        rgba(49,132,91,.1);  
+}  
+  
+.form-row {  
+    display: grid;  
+  
+    grid-template-columns:  
+        1fr 1fr;  
+  
+    gap: 12px;  
+}  
+  
+.modal-actions {  
+    margin-top: 19px;  
+  
+    display: grid;  
+  
+    grid-template-columns:  
+        1fr 1fr;  
+  
+    gap: 10px;  
+}  
+  
+.center {  
+    text-align: center;  
+}  
+  
+.center h2 {  
+    margin:  
+        0 0 8px;  
+}  
+  
+.center > p {  
+    color: var(--muted);  
+  
+    line-height: 1.6;  
+}  
+  
+  
+/* =========================================================  
+   MILESTONE BUILDER  
+   ========================================================= */  
+  
+.builder {  
+    margin:  
+        6px 0 20px;  
+  
+    padding: 18px;  
+  
+    border:  
+        1px solid var(--border);  
+  
+    border-radius: 16px;  
+  
+    background: #f8faf8;  
+}  
+  
+.builder-title {  
+    margin-bottom: 13px;  
+  
+    display: flex;  
+    align-items: center;  
+    justify-content: space-between;  
+  
+    gap: 10px;  
+}  
+  
+.builder-title strong {  
+    font-size: 14px;  
+}  
+  
+.preset-buttons {  
+    display: flex;  
+  
+    flex-wrap: wrap;  
+  
+    gap: 7px;  
+  
+    margin-bottom: 14px;  
+}  
+  
+.preset-btn {  
+    padding:  
+        8px 10px;  
+  
+    border:  
+        1px solid #dce4de;  
+  
+    border-radius: 9px;  
+  
+    color: var(--text);  
+  
+    background: white;  
+  
+    font-size: 11px;  
+    font-weight: 650;  
+}  
+  
+.preset-btn:hover {  
+    color: var(--green);  
+  
+    border-color: var(--green);  
+}  
+  
+.custom-row {  
+    display: grid;  
+  
+    grid-template-columns:  
+        1fr 1fr auto;  
+  
+    gap: 8px;  
+}  
+  
+.custom-row input,  
+.custom-row select {  
+    padding:  
+        11px 12px;  
+}  
+  
+.add-goal-btn {  
+    padding:  
+        10px 14px;  
+  
+    color: white;  
+  
+    border: 0;  
+  
+    border-radius: 10px;  
+  
+    background: var(--green);  
+}  
+  
+.milestone-list {  
+    margin-top: 14px;  
+  
+    display: flex;  
+    flex-direction: column;  
+  
+    gap: 8px;  
+}  
+  
+.milestone-row {  
+    padding:  
+        11px 12px;  
+  
+    display: flex;  
+    align-items: center;  
+    justify-content: space-between;  
+  
+    gap: 10px;  
+  
+    border:  
+        1px solid var(--border);  
+  
+    border-radius: 11px;  
+  
+    background: white;  
+}  
+  
+.milestone-row-left {  
+    min-width: 0;  
+  
+    display: flex;  
+    align-items: center;  
+  
+    gap: 10px;  
+}  
+  
+.milestone-number {  
+    width: 26px;  
+    height: 26px;  
+  
+    flex: 0 0 26px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 50%;  
+  
+    color: var(--green);  
+  
+    background: var(--green-soft);  
+  
+    font-size: 11px;  
+    font-weight: 750;  
+}  
+  
+.milestone-row strong {  
+    display: block;  
+  
+    font-size: 13px;  
+}  
+  
+.milestone-row small {  
+    display: block;  
+  
+    margin-top: 2px;  
+  
+    color: var(--muted);  
+  
+    font-size: 10px;  
+}  
+  
+.remove-goal {  
+    width: 29px;  
+    height: 29px;  
+  
+    flex: 0 0 29px;  
+  
+    border: 0;  
+  
+    border-radius: 8px;  
+  
+    color: var(--red);  
+  
+    background: var(--red-soft);  
+}  
+  
+.no-milestones {  
+    padding:  
+        13px;  
+  
+    color: var(--muted);  
+  
+    border:  
+        1px dashed #d4ddd6;  
+  
+    border-radius: 10px;  
+  
+    text-align: center;  
+  
+    font-size: 11px;  
+}  
+  
+  
+/* =========================================================  
+   RESTART  
+   ========================================================= */  
+  
+.restart-options {  
+    display: grid;  
+  
+    grid-template-columns:  
+        1fr 1fr;  
+  
+    gap: 12px;  
+  
+    margin-top: 22px;  
+}  
+  
+.restart-option {  
+    padding: 20px;  
+  
+    text-align: left;  
+  
+    border:  
+        1px solid var(--border);  
+  
+    border-radius: 16px;  
+  
+    background: white;  
+  
+    transition: .15s ease;  
+}  
+  
+.restart-option:hover {  
+    border-color:  
+        var(--green);  
+  
+    background:  
+        var(--green-pale);  
+  
+    transform:  
+        translateY(-1px);  
+}  
+  
+.restart-option-icon {  
+    width: 42px;  
+    height: 42px;  
+  
+    margin-bottom: 13px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 12px;  
+  
+    color: var(--green);  
+  
+    background: var(--green-soft);  
+  
+    font-size: 19px;  
+}  
+  
+.restart-option strong {  
+    display: block;  
+  
+    margin-bottom: 7px;  
+}  
+  
+.restart-option span {  
+    display: block;  
+  
+    color: var(--muted);  
+  
+    font-size: 12px;  
+    line-height: 1.5;  
+}  
+  
+  
+/* =========================================================  
+   CELEBRATION  
+   ========================================================= */  
+  
+.celebration {  
+    width: 78px;  
+    height: 78px;  
+  
+    margin:  
+        0 auto 18px;  
+  
+    display: grid;  
+    place-items: center;  
+  
+    border-radius: 24px;  
+  
+    background:  
+        var(--gold-soft);  
+  
+    font-size: 37px;  
+}  
+  
+.achievement {  
+    margin:  
+        21px 0;  
+  
+    padding: 16px;  
+  
+    border-radius: 14px;  
+  
+    color: var(--green-dark);  
+  
+    background: var(--green-soft);  
+  
+    font-weight: 700;  
+}  
+  
+  
+/* =========================================================  
+   TOAST  
+   ========================================================= */  
+  
+.toast {  
+    position: fixed;  
+  
+    z-index: 2000;  
+  
+    left: 50%;  
+    bottom: 28px;  
+  
+    max-width:  
+        calc(100% - 30px);  
+  
+    padding:  
+        12px 18px;  
+  
+    color: white;  
+  
+    background: #1d2921;  
+  
+    border-radius: 12px;  
+  
+    box-shadow:  
+        0 15px 40px  
+        rgba(0,0,0,.18);  
+  
+    font-size: 13px;  
+  
+    opacity: 0;  
+  
+    pointer-events: none;  
+  
+    transform:  
+        translate(-50%, 15px);  
+  
+    transition: .2s ease;  
+}  
+  
+.toast.show {  
+    opacity: 1;  
+  
+    transform:  
+        translate(-50%, 0);  
+}  
+  
+  
+/* =========================================================  
+   RESPONSIVE  
+   ========================================================= */  
+  
+@media (max-width: 700px) {  
+  
+    .header {  
+        width:  
+            calc(100% - 26px);  
+  
+        min-height: 74px;  
+    }  
+  
+    .brand-slogan {  
+        display: none;  
+    }  
+  
+    .brand-name {  
+        font-size: 17px;  
+    }  
+  
+    .logo {  
+        width: 36px;  
+        height: 36px;  
+  
+        flex-basis: 36px;  
+    }  
+  
+    .header .btn {  
+        padding:  
+            11px 13px;  
+  
+        font-size: 12px;  
+    }  
+  
+    .main {  
+        width:  
+            calc(100% - 24px);  
+  
+        margin-top: 17px;  
+    }  
+  
+    .habits-grid {  
+        grid-template-columns: 1fr;  
+    }  
+  
+    .dashboard-header {  
+        flex-direction: column;  
+  
+        align-items: flex-start;  
+    }  
+  
+    .detail-card {  
+        padding:  
+            22px 18px;  
+    }  
+  
+    .timer {  
+        grid-template-columns:  
+            repeat(2, 1fr);  
+    }  
+  
+    .history-card {  
+        padding:  
+            23px 18px;  
+    }  
+  
+    .form-row {  
+        grid-template-columns: 1fr;  
+  
+        gap: 0;  
+    }  
+  
+    .modal {  
+        padding:  
+            23px 18px;  
+    }  
+  
+    .actions,  
+    .modal-actions,  
+    .restart-options {  
+        grid-template-columns: 1fr;  
+    }  
+  
+    .progress-info {  
+        flex-direction: column;  
+  
+        gap: 4px;  
+    }  
+  
+    .custom-row {  
+        grid-template-columns:  
+            1fr 1fr;  
+    }  
+  
+    .add-goal-btn {  
+        grid-column:  
+            1 / -1;  
+    }  
+  
+    .timeline-header {  
+        flex-direction: column;  
+    }  
+  
+    .timeline-date {  
+        text-align: left;  
+    }  
+  
+}  
+  
+@media (max-width: 390px) {  
+  
+    .header .btn {  
+        font-size: 0;  
+    }  
+  
+    .header .btn::after {  
+        content: "+";  
+  
+        font-size: 20px;  
+    }  
+  
+}  
+</style>  
+</head>  
+  
+<body>  
+  
+<!-- =========================================================  
+     HEADER  
+     ========================================================= -->  
+  
+<header class="header">  
+  
+    <div  
+        class="brand"  
+        id="brandButton"  
+        title="All Habits"  
+    >  
+  
+        <div class="logo">  
+  
+            <!-- Minimal leaf logo -->  
+  
+            <svg  
+                viewBox="0 0 32 32"  
+                fill="none"  
+                aria-hidden="true"  
+            >  
+                <path  
+                    d="M8.5 24.5C9.5 15.2 15.4 8.6 24.5 7.7"  
+                    stroke="currentColor"  
+                    stroke-width="3.2"  
+                    stroke-linecap="round"  
+                />  
+  
+                <path  
+                    d="M10.7 18.5C15.4 18.4 20.1 15.9 23.2 12.1"  
+                    stroke="currentColor"  
+                    stroke-width="3.2"  
+                    stroke-linecap="round"  
+                />  
+            </svg>  
+  
+        </div>  
+  
+  
+        <div class="brand-copy">  
+  
+            <span class="brand-name">  
+                Everward  
+            </span>  
+  
+            <span class="brand-slogan">  
+                Keep moving forward.  
+            </span>  
+  
+        </div>  
+  
+    </div>  
+  
+  
+    <button  
+        id="newHabitButton"  
+        class="btn btn-primary"  
+    >  
+        + New Habit  
+    </button>  
+  
+</header>  
+  
+  
+<!-- =========================================================  
+     MAIN  
+     ========================================================= -->  
+  
+<main class="main">  
+  
+  
+    <!-- EMPTY VIEW -->  
+  
+    <section  
+        id="emptyView"  
+        class="empty hidden"  
+    >  
+  
+        <div class="empty-logo">  
+  
+            <svg  
+                viewBox="0 0 32 32"  
+                fill="none"  
+            >  
+                <path  
+                    d="M8.5 24.5C9.5 15.2 15.4 8.6 24.5 7.7"  
+                    stroke="currentColor"  
+                    stroke-width="3.2"  
+                    stroke-linecap="round"  
+                />  
+  
+                <path  
+                    d="M10.7 18.5C15.4 18.4 20.1 15.9 23.2 12.1"  
+                    stroke="currentColor"  
+                    stroke-width="3.2"  
+                    stroke-linecap="round"  
+                />  
+            </svg>  
+  
+        </div>  
+  
+  
+        <h1>  
+            Keep moving forward.  
+        </h1>  
+  
+  
+        <p>  
+            Leave old habits behind, track the time  
+            you've kept moving forward, and celebrate  
+            every milestone along the way.  
+        </p>  
+  
+  
+        <button  
+            id="emptyCreateButton"  
+            class="btn btn-primary"  
+        >  
+            Create Your First Habit  
+        </button>  
+  
+    </section>  
+  
+  
+  
+    <!-- DASHBOARD -->  
+  
+    <section  
+        id="dashboardView"  
+        class="hidden"  
+    >  
+  
+        <div class="dashboard-header">  
+  
+            <div>  
+  
+                <span class="small-label">  
+                    Everward  
+                </span>  
+  
+                <h1>  
+                    My Habits  
+                </h1>  
+  
+                <p>  
+                    Keep moving forward.  
+                </p>  
+  
+            </div>  
+  
+        </div>  
+  
+  
+        <div  
+            id="habitsGrid"  
+            class="habits-grid"  
+        ></div>  
+  
+    </section>  
+  
+  
+  
+    <!-- DETAIL -->  
+  
+    <section  
+        id="detailView"  
+        class="hidden"  
+    >  
+  
+        <div class="detail-wrap">  
+  
+  
+            <button  
+                id="backButton"  
+                class="back-button"  
+            >  
+                ← All Habits  
+            </button>  
+  
+  
+            <article class="card detail-card">  
+  
+  
+                <div class="detail-header">  
+  
+                    <div>  
+  
+                        <span  
+                            id="detailStatus"  
+                            class="badge"  
+                        >  
+                            In Progress  
+                        </span>  
+  
+  
+                        <h1  
+                            id="detailTitle"  
+                            class="detail-title"  
+                        ></h1>  
+  
+  
+                        <p  
+                            id="detailStarted"  
+                            class="started"  
+                        ></p>  
+  
+                    </div>  
+  
+  
+                    <button  
+                        id="deleteButton"  
+                        class="delete-icon"  
+                        title="Delete habit"  
+                        aria-label="Delete habit"  
+                    >  
+                        ⋯  
+                    </button>  
+  
+                </div>  
+  
+  
+  
+                <!-- TIMER -->  
+  
+                <div class="timer">  
+  
+                    <div class="time-box">  
+  
+                        <strong id="days">  
+                            0  
+                        </strong>  
+  
+                        <span>  
+                            Days  
+                        </span>  
+  
+                    </div>  
+  
+  
+                    <div class="time-box">  
+  
+                        <strong id="hours">  
+                            00  
+                        </strong>  
+  
+                        <span>  
+                            Hours  
+                        </span>  
+  
+                    </div>  
+  
+  
+                    <div class="time-box">  
+  
+                        <strong id="minutes">  
+                            00  
+                        </strong>  
+  
+                        <span>  
+                            Minutes  
+                        </span>  
+  
+                    </div>  
+  
+  
+                    <div class="time-box">  
+  
+                        <strong id="seconds">  
+                            00  
+                        </strong>  
+  
+                        <span>  
+                            Seconds  
+                        </span>  
+  
+                    </div>  
+  
+                </div>  
+  
+  
+  
+                <!-- CURRENT MILESTONE -->  
+  
+                <div  
+                    id="milestonePanel"  
+                    class="milestone-panel"  
+                >  
+  
+                    <div class="milestone-head">  
+  
+                        <div>  
+  
+                            <span class="small-label">  
+                                Current Milestone  
+                            </span>  
+  
+                            <h3 id="currentMilestoneName">  
+                            </h3>  
+  
+                        </div>  
+  
+  
+                        <span  
+                            id="goalPercent"  
+                            class="goal-percent"  
+                        ></span>  
+  
+                    </div>  
+  
+  
+                    <div class="progress-track">  
+  
+                        <div  
+                            id="progressBar"  
+                            class="progress-bar"  
+                        ></div>  
+  
+                    </div>  
+  
+  
+                    <div class="progress-info">  
+  
+                        <span id="goalElapsed">  
+                        </span>  
+  
+                        <span id="goalRemaining">  
+                        </span>  
+  
+                    </div>  
+  
+  
+                    <div  
+                        id="milestoneCount"  
+                        class="milestone-count"  
+                    ></div>  
+  
+                </div>  
+  
+  
+  
+                <!-- NO GOAL -->  
+  
+                <div  
+                    id="noGoalCard"  
+                    class="no-goal hidden"  
+                >  
+  
+                    <div class="infinity">  
+                        ∞  
+                    </div>  
+  
+  
+                    <div>  
+  
+                        <strong>  
+                            No active milestone  
+                        </strong>  
+  
+                        <p>  
+                            Keep going for as long as you want.  
+                            You can add milestones at any time.  
+                        </p>  
+  
+                    </div>  
+  
+                </div>  
+  
+  
+  
+                <!-- STOPPED -->  
+  
+                <div  
+                    id="stoppedBox"  
+                    class="stopped-box hidden"  
+                >  
+  
+                    <strong>  
+                        Journey stopped  
+                    </strong>  
+  
+                    <p id="stoppedText">  
+                    </p>  
+  
+                </div>  
+  
+  
+  
+                <!-- ACTIONS -->  
+  
+                <div class="actions">  
+  
+                    <button  
+                        id="stopButton"  
+                        class="btn btn-danger"  
+                    >  
+                        Stop  
+                    </button>  
+  
+  
+                    <button  
+                        id="restartButton"  
+                        class="btn btn-primary hidden"  
+                    >  
+                        Restart  
+                    </button>  
+  
+  
+                    <button  
+                        id="editButton"  
+                        class="btn btn-secondary"  
+                    >  
+                        Edit  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div class="quote">  
+                    “Keep moving forward.”  
+                </div>  
+  
+            </article>  
+  
+  
+  
+            <!-- HISTORY -->  
+  
+            <article class="card history-card">  
+  
+                <span class="small-label">  
+                    Your Journey  
+                </span>  
+  
+                <h2>  
+                    History  
+                </h2>  
+  
+                <p class="history-subtitle">  
+                    Previous timelines and milestones  
+                    stay here even when you begin again.  
+                </p>  
+  
+  
+                <div id="historyList">  
+                </div>  
+  
+            </article>  
+  
+        </div>  
+  
+    </section>  
+  
+</main>  
+  
+  
+<!-- =========================================================  
+     CREATE / EDIT HABIT  
+     ========================================================= -->  
+  
+<div  
+    id="habitModal"  
+    class="overlay hidden"  
+>  
+  
+    <div class="modal">  
+  
+  
+        <div class="modal-header">  
+  
+            <div>  
+  
+                <span class="small-label">  
+                    Everward  
+                </span>  
+  
+                <h2 id="formHeading">  
+                    Create New Habit  
+                </h2>  
+  
+            </div>  
+  
+  
+            <button  
+                class="close"  
+                data-close="habitModal"  
+                aria-label="Close"  
+            >  
+                ×  
+            </button>  
+  
+        </div>  
+  
+  
+  
+        <form id="habitForm">  
+  
+  
+            <div class="field">  
+  
+                <label for="titleInput">  
+                    Title  
+                </label>  
+  
+                <input  
+                    id="titleInput"  
+                    type="text"  
+                    maxlength="80"  
+                    placeholder="e.g. Quit Smoking"  
+                    required  
+                >  
+  
+            </div>  
+  
+  
+  
+            <div class="form-row">  
+  
+                <div class="field">  
+  
+                    <label for="dateInput">  
+                        Start Date  
+                    </label>  
+  
+                    <input  
+                        id="dateInput"  
+                        type="date"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <div class="field">  
+  
+                    <label for="timeInput">  
+                        Start Time  
+                    </label>  
+  
+                    <input  
+                        id="timeInput"  
+                        type="time"  
+                        required  
+                    >  
+  
+                </div>  
+  
+            </div>  
+  
+  
+  
+            <!-- MILESTONE BUILDER -->  
+  
+            <div class="builder">  
+  
+                <div class="builder-title">  
+  
+                    <div>  
+  
+                        <strong>  
+                            Milestones  
+                        </strong>  
+  
+                        <div  
+                            class="field-note"  
+                            style="margin:4px 0 0;"  
+                        >  
+                            All milestones are measured  
+                            from this timeline's start.  
+                        </div>  
+  
+                    </div>  
+  
+                </div>  
+  
+  
+                <div class="preset-buttons">  
+  
+                    <button  
+                        type="button"  
+                        class="preset-btn"  
+                        data-preset="week"  
+                    >  
+                        + 1 Week  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="preset-btn"  
+                        data-preset="month"  
+                    >  
+                        + 1 Month  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="preset-btn"  
+                        data-preset="3months"  
+                    >  
+                        + 3 Months  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="preset-btn"  
+                        data-preset="6months"  
+                    >  
+                        + 6 Months  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="preset-btn"  
+                        data-preset="year"  
+                    >  
+                        + 1 Year  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div class="custom-row">  
+  
+                    <input  
+                        id="customGoalValue"  
+                        type="number"  
+                        min="0.000001"  
+                        step="any"  
+                        placeholder="e.g. 42"  
+                    >  
+  
+  
+                    <select id="customGoalUnit">  
+  
+                        <option value="days">  
+                            Days  
+                        </option>  
+  
+                        <option value="weeks">  
+                            Weeks  
+                        </option>  
+  
+                        <option value="months">  
+                            Months  
+                        </option>  
+  
+                        <option value="years">  
+                            Years  
+                        </option>  
+  
+                    </select>  
+  
+  
+                    <button  
+                        type="button"  
+                        id="addCustomGoalButton"  
+                        class="add-goal-btn"  
+                    >  
+                        Add  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div  
+                    id="milestoneBuilderList"  
+                    class="milestone-list"  
+                ></div>  
+  
+            </div>  
+  
+  
+  
+            <button  
+                type="submit"  
+                class="btn btn-primary btn-full"  
+            >  
+                Save Habit  
+            </button>  
+  
+        </form>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<!-- =========================================================  
+     RESTART CHOICE  
+     ========================================================= -->  
+  
+<div  
+    id="restartModal"  
+    class="overlay hidden"  
+>  
+  
+    <div class="modal">  
+  
+        <div class="modal-header">  
+  
+            <div>  
+  
+                <span class="small-label">  
+                    Restart Journey  
+                </span>  
+  
+                <h2>  
+                    How do you want to continue?  
+                </h2>  
+  
+            </div>  
+  
+  
+            <button  
+                class="close"  
+                data-close="restartModal"  
+            >  
+                ×  
+            </button>  
+  
+        </div>  
+  
+  
+        <p  
+            style="  
+                color:var(--muted);  
+                line-height:1.6;  
+                margin-top:-8px;  
+            "  
+        >  
+            Choose whether the stop was only a mistake  
+            or whether this is truly a new beginning.  
+        </p>  
+  
+  
+        <div class="restart-options">  
+  
+  
+            <button  
+                id="resumeTimelineButton"  
+                class="restart-option"  
+            >  
+  
+                <div class="restart-option-icon">  
+                    ↻  
+                </div>  
+  
+                <strong>  
+                    Resume Previous Timeline  
+                </strong>  
+  
+                <span>  
+                    Continue from the original start time.  
+                    The stopped period will still count,  
+                    as if the journey never truly ended.  
+                </span>  
+  
+            </button>  
+  
+  
+  
+            <button  
+                id="newTimelineButton"  
+                class="restart-option"  
+            >  
+  
+                <div class="restart-option-icon">  
+                    ✦  
+                </div>  
+  
+                <strong>  
+                    Start New Timeline  
+                </strong>  
+  
+                <span>  
+                    Keep the old progress in History  
+                    and begin again from a new date  
+                    with new milestones.  
+                </span>  
+  
+            </button>  
+  
+        </div>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<!-- =========================================================  
+     NEW TIMELINE  
+     ========================================================= -->  
+  
+<div  
+    id="newTimelineModal"  
+    class="overlay hidden"  
+>  
+  
+    <div class="modal">  
+  
+  
+        <div class="modal-header">  
+  
+            <div>  
+  
+                <span class="small-label">  
+                    New Timeline  
+                </span>  
+  
+                <h2>  
+                    Begin Again  
+                </h2>  
+  
+            </div>  
+  
+  
+            <button  
+                class="close"  
+                data-close="newTimelineModal"  
+            >  
+                ×  
+            </button>  
+  
+        </div>  
+  
+  
+        <form id="newTimelineForm">  
+  
+  
+            <div class="form-row">  
+  
+                <div class="field">  
+  
+                    <label for="restartDateInput">  
+                        New Start Date  
+                    </label>  
+  
+                    <input  
+                        id="restartDateInput"  
+                        type="date"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <div class="field">  
+  
+                    <label for="restartTimeInput">  
+                        New Start Time  
+                    </label>  
+  
+                    <input  
+                        id="restartTimeInput"  
+                        type="time"  
+                        required  
+                    >  
+  
+                </div>  
+  
+            </div>  
+  
+  
+  
+            <div class="builder">  
+  
+                <div class="builder-title">  
+  
+                    <div>  
+  
+                        <strong>  
+                            New Milestones  
+                        </strong>  
+  
+                        <div  
+                            class="field-note"  
+                            style="margin:4px 0 0;"  
+                        >  
+                            Old milestones remain in History.  
+                            These milestones start from zero.  
+                        </div>  
+  
+                    </div>  
+  
+                </div>  
+  
+  
+                <div class="preset-buttons">  
+  
+                    <button  
+                        type="button"  
+                        class="restart-preset-btn preset-btn"  
+                        data-preset="week"  
+                    >  
+                        + 1 Week  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="restart-preset-btn preset-btn"  
+                        data-preset="month"  
+                    >  
+                        + 1 Month  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="restart-preset-btn preset-btn"  
+                        data-preset="3months"  
+                    >  
+                        + 3 Months  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="restart-preset-btn preset-btn"  
+                        data-preset="6months"  
+                    >  
+                        + 6 Months  
+                    </button>  
+  
+                    <button  
+                        type="button"  
+                        class="restart-preset-btn preset-btn"  
+                        data-preset="year"  
+                    >  
+                        + 1 Year  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div class="custom-row">  
+  
+                    <input  
+                        id="restartCustomValue"  
+                        type="number"  
+                        min="0.000001"  
+                        step="any"  
+                        placeholder="e.g. 30"  
+                    >  
+  
+  
+                    <select id="restartCustomUnit">  
+  
+                        <option value="days">  
+                            Days  
+                        </option>  
+  
+                        <option value="weeks">  
+                            Weeks  
+                        </option>  
+  
+                        <option value="months">  
+                            Months  
+                        </option>  
+  
+                        <option value="years">  
+                            Years  
+                        </option>  
+  
+                    </select>  
+  
+  
+                    <button  
+                        type="button"  
+                        id="restartAddCustomButton"  
+                        class="add-goal-btn"  
+                    >  
+                        Add  
+                    </button>  
+  
+                </div>  
+  
+  
+                <div  
+                    id="restartMilestoneList"  
+                    class="milestone-list"  
+                ></div>  
+  
+            </div>  
+  
+  
+  
+            <button  
+                type="submit"  
+                class="btn btn-primary btn-full"  
+            >  
+                Start New Timeline  
+            </button>  
+  
+        </form>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<!-- =========================================================  
+     MILESTONE CELEBRATION  
+     ========================================================= -->  
+  
+<div  
+    id="milestoneModal"  
+    class="overlay hidden"  
+>  
+  
+    <div class="modal center">  
+  
+  
+        <div class="celebration">  
+            🏆  
+        </div>  
+  
+  
+        <h2>  
+            Congratulations!  
+        </h2>  
+  
+  
+        <p id="milestoneMessage">  
+        </p>  
+  
+  
+        <div  
+            id="completedGoal"  
+            class="achievement"  
+        ></div>  
+  
+  
+        <p id="nextMilestoneMessage">  
+        </p>  
+  
+  
+        <button  
+            id="milestoneContinueButton"  
+            class="btn btn-primary btn-full"  
+        >  
+            Keep Moving Forward  
+        </button>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<!-- =========================================================  
+     STOP  
+     ========================================================= -->  
+  
+<div  
+    id="stopModal"  
+    class="overlay hidden"  
+>  
+  
+    <div class="modal center">  
+  
+  
+        <h2>  
+            Stop this journey?  
+        </h2>  
+  
+  
+        <p>  
+            Your current timeline, completed milestones,  
+            and history will remain saved.  
+            You can restart later.  
+        </p>  
+  
+  
+        <div class="modal-actions">  
+  
+            <button  
+                class="btn btn-secondary"  
+                data-close="stopModal"  
+            >  
+                Keep Going  
+            </button>  
+  
+  
+            <button  
+                id="confirmStopButton"  
+                class="btn btn-danger"  
+            >  
+                Stop Journey  
+            </button>  
+  
+        </div>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<!-- =========================================================  
+     DELETE  
+     ========================================================= -->  
+  
+<div  
+    id="deleteModal"  
+    class="overlay hidden"  
+>  
+  
+    <div class="modal center">  
+  
+  
+        <h2>  
+            Delete this habit?  
+        </h2>  
+  
+  
+        <p>  
+            This permanently removes every timeline,  
+            milestone, and history entry for this habit.  
+        </p>  
+  
+  
+        <div class="modal-actions">  
+  
+            <button  
+                class="btn btn-secondary"  
+                data-close="deleteModal"  
+            >  
+                Cancel  
+            </button>  
+  
+  
+            <button  
+                id="confirmDeleteButton"  
+                class="btn btn-danger"  
+            >  
+                Delete  
+            </button>  
+  
+        </div>  
+  
+    </div>  
+  
+</div>  
+  
+  
+<div  
+    id="toast"  
+    class="toast"  
+></div>  
+  
+  
+<script>  
+"use strict";  
+  
+/* =========================================================  
+   EVERWARD  
+   Habit -> Timelines -> Milestones  
+   ========================================================= */  
+  
+  
+/* =========================================================  
+   STORAGE  
+   ========================================================= */  
+  
+const STORAGE_KEY =  
+    "everward_habits_v3";  
+  
+const OLD_MULTI_KEY =  
+    "better_me_habits_v2";  
+  
+const OLD_SINGLE_KEY =  
+    "better_me_habit_v1";  
+  
+  
+let selectedHabitId =  
+    null;  
+  
+let editingHabitId =  
+    null;  
+  
+let builderMilestones =  
+    [];  
+  
+let restartMilestones =  
+    [];  
+  
+let pendingCelebration =  
+    null;  
+  
+  
+const $ =  
+    id =>  
+        document.getElementById(id);  
+  
+  
+/* =========================================================  
+   TIME CONSTANTS  
+   ========================================================= */  
+  
+const DAY_MS =  
+    24 * 60 * 60 * 1000;  
+  
+const WEEK_MS =  
+    7 * DAY_MS;  
+  
+/*  
+   For milestones:  
+  
+   1 month = 30 days  
+   1 year  = 365 days  
+  
+   This makes custom durations predictable  
+   and allows very large values such as  
+   30 years or 100 years.  
+*/  
+  
+const MONTH_MS =  
+    30 * DAY_MS;  
+  
+const YEAR_MS =  
+    365 * DAY_MS;  
+  
+  
+const PRESETS = {  
+  
+    week: {  
+        label: "1 Week",  
+        durationMs: WEEK_MS  
+    },  
+  
+    month: {  
+        label: "1 Month",  
+        durationMs: MONTH_MS  
+    },  
+  
+    "3months": {  
+        label: "3 Months",  
+        durationMs: 3 * MONTH_MS  
+    },  
+  
+    "6months": {  
+        label: "6 Months",  
+        durationMs: 6 * MONTH_MS  
+    },  
+  
+    year: {  
+        label: "1 Year",  
+        durationMs: YEAR_MS  
+    }  
+  
+};  
+  
+  
+/* =========================================================  
+   ID  
+   ========================================================= */  
+  
+function createId() {  
+  
+    return (  
+        Date.now().toString(36) +  
+        Math.random()  
+            .toString(36)  
+            .slice(2, 10)  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   STORAGE FUNCTIONS  
+   ========================================================= */  
+  
+function getHabits() {  
+  
+    try {  
+  
+        const raw =  
+            localStorage.getItem(  
+                STORAGE_KEY  
+            );  
+  
+  
+        if (!raw) {  
+            return [];  
+        }  
+  
+  
+        const data =  
+            JSON.parse(raw);  
+  
+  
+        return Array.isArray(data)  
+            ? data  
+            : [];  
+  
+    } catch (error) {  
+  
+        console.error(  
+            "Could not read Everward data.",  
+            error  
+        );  
+  
+        return [];  
+    }  
+  
+}  
+  
+  
+function saveHabits(habits) {  
+  
+    localStorage.setItem(  
+        STORAGE_KEY,  
+        JSON.stringify(habits)  
+    );  
+  
+}  
+  
+  
+function getHabitById(id) {  
+  
+    return getHabits().find(  
+        habit =>  
+            habit.id === id  
+    );  
+  
+}  
+  
+  
+function updateHabit(updatedHabit) {  
+  
+    const habits =  
+        getHabits();  
+  
+  
+    const index =  
+        habits.findIndex(  
+            habit =>  
+                habit.id ===  
+                updatedHabit.id  
+        );  
+  
+  
+    if (index === -1) {  
+        return;  
+    }  
+  
+  
+    habits[index] =  
+        updatedHabit;  
+  
+  
+    saveHabits(  
+        habits  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   CURRENT TIMELINE  
+   ========================================================= */  
+  
+function getCurrentTimeline(habit) {  
+  
+    if (  
+        !habit ||  
+        !Array.isArray(habit.timelines) ||  
+        habit.timelines.length === 0  
+    ) {  
+        return null;  
+    }  
+  
+  
+    return habit.timelines[  
+        habit.timelines.length - 1  
+    ];  
+  
+}  
+  
+  
+/* =========================================================  
+   OLD DATA MIGRATION  
+   ========================================================= */  
+  
+function migrateOldData() {  
+  
+    /*  
+       Do nothing if Everward  
+       already has its own data.  
+    */  
+  
+    if (  
+        localStorage.getItem(  
+            STORAGE_KEY  
+        )  
+    ) {  
+        return;  
+    }  
+  
+  
+    let oldHabits =  
+        [];  
+  
+  
+    /*  
+       Try Better Me multi-habit version.  
+    */  
+  
+    try {  
+  
+        const raw =  
+            localStorage.getItem(  
+                OLD_MULTI_KEY  
+            );  
+  
+  
+        if (raw) {  
+  
+            const parsed =  
+                JSON.parse(raw);  
+  
+  
+            if (  
+                Array.isArray(parsed)  
+            ) {  
+  
+                oldHabits =  
+                    parsed;  
+  
+            }  
+  
+        }  
+  
+    } catch {}  
+  
+  
+    /*  
+       Otherwise try old single habit.  
+    */  
+  
+    if (  
+        oldHabits.length === 0  
+    ) {  
+  
+        try {  
+  
+            const raw =  
+                localStorage.getItem(  
+                    OLD_SINGLE_KEY  
+                );  
+  
+  
+            if (raw) {  
+  
+                const parsed =  
+                    JSON.parse(raw);  
+  
+  
+                if (parsed) {  
+  
+                    oldHabits = [  
+                        parsed  
+                    ];  
+  
+                }  
+  
+            }  
+  
+        } catch {}  
+  
+    }  
+  
+  
+    if (  
+        oldHabits.length === 0  
+    ) {  
+        return;  
+    }  
+  
+  
+    const converted =  
+        oldHabits.map(  
+            oldHabit => {  
+  
+                const start =  
+                    Number(  
+                        oldHabit.startTime  
+                    ) ||  
+                    Date.now();  
+  
+  
+                let milestone =  
+                    null;  
+  
+  
+                const oldGoalMap = {  
+  
+                    week: {  
+                        label:  
+                            "1 Week",  
+                        durationMs:  
+                            WEEK_MS  
+                    },  
+  
+                    month: {  
+                        label:  
+                            "1 Month",  
+                        durationMs:  
+                            MONTH_MS  
+                    },  
+  
+                    "3months": {  
+                        label:  
+                            "3 Months",  
+                        durationMs:  
+                            3 * MONTH_MS  
+                    },  
+  
+                    "6months": {  
+                        label:  
+                            "6 Months",  
+                        durationMs:  
+                            6 * MONTH_MS  
+                    },  
+  
+                    year: {  
+                        label:  
+                            "1 Year",  
+                        durationMs:  
+                            YEAR_MS  
+                    }  
+  
+                };  
+  
+  
+                if (  
+                    oldGoalMap[  
+                        oldHabit.currentGoal  
+                    ]  
+                ) {  
+  
+                    const mapped =  
+                        oldGoalMap[  
+                            oldHabit.currentGoal  
+                        ];  
+  
+  
+                    milestone = {  
+  
+                        id:  
+                            createId(),  
+  
+                        label:  
+                            mapped.label,  
+  
+                        durationMs:  
+                            mapped.durationMs,  
+  
+                        completed:  
+                            false,  
+  
+                        completedAt:  
+                            null  
+  
+                    };  
+  
+                }  
+  
+  
+                const events =  
+                    Array.isArray(  
+                        oldHabit.history  
+                    )  
+                    ? oldHabit.history  
+                        .map(item => ({  
+  
+                            id:  
+                                createId(),  
+  
+                            type:  
+                                item.type ||  
+                                "note",  
+  
+                            title:  
+                                item.title ||  
+                                "History",  
+  
+                            date:  
+                                Number(  
+                                    item.date  
+                                ) ||  
+                                Date.now()  
+  
+                        }))  
+                    : [];  
+  
+  
+                return {  
+  
+                    id:  
+                        oldHabit.id ||  
+                        createId(),  
+  
+                    title:  
+                        oldHabit.title ||  
+                        "Untitled Habit",  
+  
+                    status:  
+                        oldHabit.status ===  
+                            "stopped"  
+                            ? "stopped"  
+                            : "active",  
+  
+                    createdAt:  
+                        start,  
+  
+                    timelines: [  
+  
+                        {  
+  
+                            id:  
+                                createId(),  
+  
+                            startTime:  
+                                start,  
+  
+                            stopTime:  
+                                oldHabit.stopTime ||  
+                                null,  
+  
+                            milestones:  
+                                milestone  
+                                    ? [milestone]  
+                                    : [],  
+  
+                            events:  
+                                events.length  
+                                    ? events  
+                                    : [  
+                                        {  
+                                            id:  
+                                                createId(),  
+  
+                                            type:  
+                                                "start",  
+  
+                                            title:  
+                                                "Journey started",  
+  
+                                            date:  
+                                                start  
+                                        }  
+                                    ]  
+  
+                        }  
+  
+                    ]  
+  
+                };  
+  
+            }  
+        );  
+  
+  
+    saveHabits(  
+        converted  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   DATE HELPERS  
+   ========================================================= */  
+  
+function localDateValue(date) {  
+  
+    const year =  
+        date.getFullYear();  
+  
+  
+    const month =  
+        String(  
+            date.getMonth() + 1  
+        ).padStart(2, "0");  
+  
+  
+    const day =  
+        String(  
+            date.getDate()  
+        ).padStart(2, "0");  
+  
+  
+    return (  
+        year +  
+        "-" +  
+        month +  
+        "-" +  
+        day  
+    );  
+  
+}  
+  
+  
+function localTimeValue(date) {  
+  
+    const hours =  
+        String(  
+            date.getHours()  
+        ).padStart(2, "0");  
+  
+  
+    const minutes =  
+        String(  
+            date.getMinutes()  
+        ).padStart(2, "0");  
+  
+  
+    return (  
+        hours +  
+        ":" +  
+        minutes  
+    );  
+  
+}  
+  
+  
+function formatDate(timestamp) {  
+  
+    if (!timestamp) {  
+        return "";  
+    }  
+  
+  
+    return new Intl.DateTimeFormat(  
+        "en-US",  
+        {  
+            month: "short",  
+            day: "numeric",  
+            year: "numeric",  
+            hour: "numeric",  
+            minute: "2-digit"  
+        }  
+    ).format(  
+        new Date(timestamp)  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   ELAPSED TIME  
+   ========================================================= */  
+  
+function elapsedTime(  
+    start,  
+    end  
+) {  
+  
+    const milliseconds =  
+        Math.max(  
+            0,  
+            end - start  
+        );  
+  
+  
+    const totalSeconds =  
+        Math.floor(  
+            milliseconds / 1000  
+        );  
+  
+  
+    return {  
+  
+        milliseconds:  
+  
+            milliseconds,  
+  
+        days:  
+  
+            Math.floor(  
+                totalSeconds /  
+                86400  
+            ),  
+  
+        hours:  
+  
+            Math.floor(  
+                (  
+                    totalSeconds %  
+                    86400  
+                ) /  
+                3600  
+            ),  
+  
+        minutes:  
+  
+            Math.floor(  
+                (  
+                    totalSeconds %  
+                    3600  
+                ) /  
+                60  
+            ),  
+  
+        seconds:  
+  
+            totalSeconds % 60  
+  
+    };  
+  
+}  
+  
+  
+/* =========================================================  
+   DURATION LABELS  
+   ========================================================= */  
+  
+function plural(  
+    value,  
+    singular,  
+    pluralWord  
+) {  
+  
+    return (  
+        value +  
+        " " +  
+        (  
+            value === 1  
+                ? singular  
+                : pluralWord  
+        )  
+    );  
+  
+}  
+  
+  
+function formatDurationHuman(  
+    durationMs  
+) {  
+  
+    const days =  
+        durationMs /  
+        DAY_MS;  
+  
+  
+    /*  
+       Recognize clean years.  
+    */  
+  
+    if (  
+        durationMs %  
+        YEAR_MS === 0  
+    ) {  
+  
+        const years =  
+            durationMs /  
+            YEAR_MS;  
+  
+  
+        return plural(  
+            years,  
+            "Year",  
+            "Years"  
+        );  
+  
+    }  
+  
+  
+    /*  
+       Recognize clean months.  
+    */  
+  
+    if (  
+        durationMs %  
+        MONTH_MS === 0  
+    ) {  
+  
+        const months =  
+            durationMs /  
+            MONTH_MS;  
+  
+  
+        return plural(  
+            months,  
+            "Month",  
+            "Months"  
+        );  
+  
+    }  
+  
+  
+    /*  
+       Recognize clean weeks.  
+    */  
+  
+    if (  
+        durationMs %  
+        WEEK_MS === 0  
+    ) {  
+  
+        const weeks =  
+            durationMs /  
+            WEEK_MS;  
+  
+  
+        return plural(  
+            weeks,  
+            "Week",  
+            "Weeks"  
+        );  
+  
+    }  
+  
+  
+    /*  
+       Otherwise show days.  
+    */  
+  
+    const roundedDays =  
+        Math.round(  
+            days * 100  
+        ) / 100;  
+  
+  
+    return plural(  
+        roundedDays,  
+        "Day",  
+        "Days"  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   CUSTOM DURATION  
+   ========================================================= */  
+  
+function customDurationToMs(  
+    value,  
+    unit  
+) {  
+  
+    const number =  
+        Number(value);  
+  
+  
+    if (  
+        !Number.isFinite(number) ||  
+        number <= 0  
+    ) {  
+        return null;  
+    }  
+  
+  
+    switch (unit) {  
+  
+        case "days":  
+  
+            return (  
+                number *  
+                DAY_MS  
+            );  
+  
+  
+        case "weeks":  
+  
+            return (  
+                number *  
+                WEEK_MS  
+            );  
+  
+  
+        case "months":  
+  
+            return (  
+                number *  
+                MONTH_MS  
+            );  
+  
+  
+        case "years":  
+  
+            return (  
+                number *  
+                YEAR_MS  
+            );  
+  
+  
+        default:  
+  
+            return null;  
+  
+    }  
+  
+}  
+  
+  
+/* =========================================================  
+   MILESTONE NORMALIZATION  
+   ========================================================= */  
+  
+function normalizeMilestones(  
+    milestones  
+) {  
+  
+    /*  
+       Sort by cumulative duration.  
+  
+       Example:  
+       1 Week  
+       1 Month  
+       3 Months  
+  
+       All are measured from  
+       the timeline start.  
+    */  
+  
+    const sorted =  
+        [...milestones]  
+            .sort(  
+                (a, b) =>  
+                    a.durationMs -  
+                    b.durationMs  
+            );  
+  
+  
+    /*  
+       Remove duplicate durations.  
+    */  
+  
+    const unique =  
+        [];  
+  
+  
+    sorted.forEach(  
+        milestone => {  
+  
+            const duplicate =  
+                unique.some(  
+                    existing =>  
+                        Math.abs(  
+                            existing.durationMs -  
+                            milestone.durationMs  
+                        ) < 1  
+                );  
+  
+  
+            if (!duplicate) {  
+  
+                unique.push(  
+                    milestone  
+                );  
+  
+            }  
+  
+        }  
+    );  
+  
+  
+    return unique;  
+  
+}  
+  
+  
+/* =========================================================  
+   CREATE MILESTONE  
+   ========================================================= */  
+  
+function makeMilestone(  
+    label,  
+    durationMs  
+) {  
+  
+    return {  
+  
+        id:  
+            createId(),  
+  
+        label:  
+            label,  
+  
+        durationMs:  
+            durationMs,  
+  
+        completed:  
+            false,  
+  
+        completedAt:  
+            null  
+  
+    };  
+  
+}  
+  
+  
+/* =========================================================  
+   VIEWS  
+   ========================================================= */  
+  
+function hideViews() {  
+  
+    $("emptyView")  
+        .classList  
+        .add("hidden");  
+  
+  
+    $("dashboardView")  
+        .classList  
+        .add("hidden");  
+  
+  
+    $("detailView")  
+        .classList  
+        .add("hidden");  
+  
+}  
+  
+  
+function showDashboard() {  
+  
+    selectedHabitId =  
+        null;  
+  
+  
+    hideViews();  
+  
+  
+    const habits =  
+        getHabits();  
+  
+  
+    if (  
+        habits.length === 0  
+    ) {  
+  
+        $("emptyView")  
+            .classList  
+            .remove("hidden");  
+  
+    } else {  
+  
+        $("dashboardView")  
+            .classList  
+            .remove("hidden");  
+  
+  
+        renderDashboard();  
+  
+    }  
+  
+}  
+  
+  
+function showHabit(id) {  
+  
+    selectedHabitId =  
+        id;  
+  
+  
+    hideViews();  
+  
+  
+    $("detailView")  
+        .classList  
+        .remove("hidden");  
+  
+  
+    renderDetail();  
+  
+}  
+  
+  
+/* =========================================================  
+   DASHBOARD  
+   ========================================================= */  
+  
+function renderDashboard() {  
+  
+    const grid =  
+        $("habitsGrid");  
+  
+  
+    grid.innerHTML =  
+        "";  
+  
+  
+    const habits =  
+        getHabits();  
+  
+  
+    habits.forEach(  
+        habit => {  
+  
+            const timeline =  
+                getCurrentTimeline(  
+                    habit  
+                );  
+  
+  
+            if (!timeline) {  
+                return;  
+            }  
+  
+  
+            const end =  
+                habit.status ===  
+                    "stopped"  
+  
+                    ? (  
+                        timeline.stopTime ||  
+                        Date.now()  
+                    )  
+  
+                    : Date.now();  
+  
+  
+            const elapsed =  
+                elapsedTime(  
+                    timeline.startTime,  
+                    end  
+                );  
+  
+  
+            const card =  
+                document.createElement(  
+                    "article"  
+                );  
+  
+  
+            card.className =  
+                "habit-preview";  
+  
+  
+            card.addEventListener(  
+                "click",  
+                () => {  
+  
+                    showHabit(  
+                        habit.id  
+                    );  
+  
+                }  
+            );  
+  
+  
+            const top =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            top.className =  
+                "preview-top";  
+  
+  
+            const badge =  
+                document.createElement(  
+                    "span"  
+                );  
+  
+  
+            badge.className =  
+                habit.status ===  
+                    "stopped"  
+  
+                    ? "badge stopped"  
+  
+                    : "badge";  
+  
+  
+            badge.textContent =  
+                habit.status ===  
+                    "stopped"  
+  
+                    ? "Stopped"  
+  
+                    : "In Progress";  
+  
+  
+            const title =  
+                document.createElement(  
+                    "h2"  
+                );  
+  
+  
+            title.className =  
+                "preview-title";  
+  
+  
+            title.textContent =  
+                habit.title;  
+  
+  
+            const started =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            started.className =  
+                "preview-started";  
+  
+  
+            started.textContent =  
+                "Current timeline started " +  
+                formatDate(  
+                    timeline.startTime  
+                );  
+  
+  
+            top.appendChild(  
+                badge  
+            );  
+  
+  
+            top.appendChild(  
+                title  
+            );  
+  
+  
+            top.appendChild(  
+                started  
+            );  
+  
+  
+            const days =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            days.className =  
+                "preview-days";  
+  
+  
+            const daysNumber =  
+                document.createElement(  
+                    "strong"  
+                );  
+  
+  
+            daysNumber.textContent =  
+                elapsed.days;  
+  
+  
+            const daysLabel =  
+                document.createElement(  
+                    "span"  
+                );  
+  
+  
+            daysLabel.textContent =  
+                elapsed.days === 1  
+                    ? "Day on this timeline"  
+                    : "Days on this timeline";  
+  
+  
+            days.appendChild(  
+                daysNumber  
+            );  
+  
+  
+            days.appendChild(  
+                daysLabel  
+            );  
+  
+  
+            const bottom =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            bottom.className =  
+                "preview-bottom";  
+  
+  
+            const currentMilestone =  
+                getNextMilestone(  
+                    timeline  
+                );  
+  
+  
+            const goalText =  
+                document.createElement(  
+                    "span"  
+                );  
+  
+  
+            if (  
+                currentMilestone  
+            ) {  
+  
+                goalText.textContent =  
+                    "Next: " +  
+                    currentMilestone.label;  
+  
+            } else if (  
+                timeline.milestones.length  
+            ) {  
+  
+                goalText.textContent =  
+                    "All milestones completed";  
+  
+            } else {  
+  
+                goalText.textContent =  
+                    "No active milestone";  
+  
+            }  
+  
+  
+            const viewText =  
+                document.createElement(  
+                    "span"  
+                );  
+  
+  
+            viewText.textContent =  
+                "View →";  
+  
+  
+            bottom.appendChild(  
+                goalText  
+            );  
+  
+  
+            bottom.appendChild(  
+                viewText  
+            );  
+  
+  
+            card.appendChild(  
+                top  
+            );  
+  
+  
+            card.appendChild(  
+                days  
+            );  
+  
+  
+            card.appendChild(  
+                bottom  
+            );  
+  
+  
+            grid.appendChild(  
+                card  
+            );  
+  
+        }  
+    );  
+  
+  
+    /*  
+       Add card  
+    */  
+  
+    const addCard =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    addCard.className =  
+        "add-card";  
+  
+  
+    addCard.innerHTML = `  
+        <div class="add-circle">+</div>  
+        <strong>Create New Habit</strong>  
+        <span style="  
+            font-size:12px;  
+            margin-top:6px;  
+        ">  
+            Start another journey  
+        </span>  
+    `;  
+  
+  
+    addCard.addEventListener(  
+        "click",  
+        () => {  
+  
+            openHabitForm();  
+  
+        }  
+    );  
+  
+  
+    grid.appendChild(  
+        addCard  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   NEXT MILESTONE  
+   ========================================================= */  
+  
+function getNextMilestone(  
+    timeline  
+) {  
+  
+    return (  
+        timeline.milestones  
+            .find(  
+                milestone =>  
+                    !milestone.completed  
+            ) ||  
+        null  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   DETAIL  
+   ========================================================= */  
+  
+function renderDetail() {  
+  
+    if (!selectedHabitId) {  
+        return;  
+    }  
+  
+  
+    const habit =  
+        getHabitById(  
+            selectedHabitId  
+        );  
+  
+  
+    if (!habit) {  
+  
+        showDashboard();  
+  
+        return;  
+    }  
+  
+  
+    const timeline =  
+        getCurrentTimeline(  
+            habit  
+        );  
+  
+  
+    if (!timeline) {  
+  
+        showDashboard();  
+  
+        return;  
+    }  
+  
+  
+    $("detailTitle")  
+        .textContent =  
+        habit.title;  
+  
+  
+    $("detailStarted")  
+        .textContent =  
+        "Current timeline started on " +  
+        formatDate(  
+            timeline.startTime  
+        );  
+  
+  
+    /*  
+       STATUS  
+    */  
+  
+    const badge =  
+        $("detailStatus");  
+  
+  
+    if (  
+        habit.status ===  
+        "stopped"  
+    ) {  
+  
+        badge.textContent =  
+            "Stopped";  
+  
+  
+        badge.className =  
+            "badge stopped";  
+  
+  
+        $("stoppedBox")  
+            .classList  
+            .remove("hidden");  
+  
+  
+        $("stoppedText")  
+            .textContent =  
+            "Stopped on " +  
+            formatDate(  
+                timeline.stopTime  
+            );  
+  
+  
+        $("stopButton")  
+            .classList  
+            .add("hidden");  
+  
+  
+        $("restartButton")  
+            .classList  
+            .remove("hidden");  
+  
+    } else {  
+  
+        badge.textContent =  
+            "In Progress";  
+  
+  
+        badge.className =  
+            "badge";  
+  
+  
+        $("stoppedBox")  
+            .classList  
+            .add("hidden");  
+  
+  
+        $("stopButton")  
+            .classList  
+            .remove("hidden");  
+  
+  
+        $("restartButton")  
+            .classList  
+            .add("hidden");  
+  
+    }  
+  
+  
+    /*  
+       TIMER  
+    */  
+  
+    const end =  
+        habit.status ===  
+            "stopped"  
+  
+            ? (  
+                timeline.stopTime ||  
+                Date.now()  
+            )  
+  
+            : Date.now();  
+  
+  
+    const elapsed =  
+        elapsedTime(  
+            timeline.startTime,  
+            end  
+        );  
+  
+  
+    $("days").textContent =  
+        elapsed.days;  
+  
+  
+    $("hours").textContent =  
+        String(  
+            elapsed.hours  
+        ).padStart(  
+            2,  
+            "0"  
+        );  
+  
+  
+    $("minutes").textContent =  
+        String(  
+            elapsed.minutes  
+        ).padStart(  
+            2,  
+            "0"  
+        );  
+  
+  
+    $("seconds").textContent =  
+        String(  
+            elapsed.seconds  
+        ).padStart(  
+            2,  
+            "0"  
+        );  
+  
+  
+    /*  
+       Complete milestones if needed.  
+    */  
+  
+    if (  
+        habit.status ===  
+        "active"  
+    ) {  
+  
+        processMilestones(  
+            habit,  
+            timeline,  
+            elapsed.milliseconds  
+        );  
+  
+    }  
+  
+  
+    /*  
+       Re-fetch because processMilestones  
+       may have updated storage.  
+    */  
+  
+    const freshHabit =  
+        getHabitById(  
+            selectedHabitId  
+        );  
+  
+  
+    const freshTimeline =  
+        getCurrentTimeline(  
+            freshHabit  
+        );  
+  
+  
+    renderCurrentMilestone(  
+        freshTimeline,  
+        elapsed.milliseconds  
+    );  
+  
+  
+    renderHistory(  
+        freshHabit  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   CURRENT MILESTONE DISPLAY  
+   ========================================================= */  
+  
+function renderCurrentMilestone(  
+    timeline,  
+    elapsedMs  
+) {  
+  
+    const next =  
+        getNextMilestone(  
+            timeline  
+        );  
+  
+  
+    if (!next) {  
+  
+        $("milestonePanel")  
+            .classList  
+            .add("hidden");  
+  
+  
+        $("noGoalCard")  
+            .classList  
+            .remove("hidden");  
+  
+  
+        return;  
+    }  
+  
+  
+    $("milestonePanel")  
+        .classList  
+        .remove("hidden");  
+  
+  
+    $("noGoalCard")  
+        .classList  
+        .add("hidden");  
+  
+  
+    $("currentMilestoneName")  
+        .textContent =  
+        next.label;  
+  
+  
+    const percentage =  
+        Math.min(  
+            100,  
+            (  
+                elapsedMs /  
+                next.durationMs  
+            ) * 100  
+        );  
+  
+  
+    $("goalPercent")  
+        .textContent =  
+        Math.floor(  
+            percentage  
+        ) + "%";  
+  
+  
+    $("progressBar")  
+        .style.width =  
+        percentage + "%";  
+  
+  
+    const elapsedDays =  
+        Math.floor(  
+            elapsedMs /  
+            DAY_MS  
+        );  
+  
+  
+    const remaining =  
+        Math.max(  
+            0,  
+            next.durationMs -  
+            elapsedMs  
+        );  
+  
+  
+    const remainingDays =  
+        Math.ceil(  
+            remaining /  
+            DAY_MS  
+        );  
+  
+  
+    $("goalElapsed")  
+        .textContent =  
+        elapsedDays +  
+        (  
+            elapsedDays === 1  
+                ? " day elapsed"  
+                : " days elapsed"  
+        );  
+  
+  
+    $("goalRemaining")  
+        .textContent =  
+        remainingDays <= 0  
+  
+            ? "Milestone reached"  
+  
+            : remainingDays +  
+              (  
+                  remainingDays === 1  
+                      ? " day remaining"  
+                      : " days remaining"  
+              );  
+  
+  
+    const completedCount =  
+        timeline.milestones  
+            .filter(  
+                milestone =>  
+                    milestone.completed  
+            )  
+            .length;  
+  
+  
+    $("milestoneCount")  
+        .textContent =  
+        completedCount +  
+        " of " +  
+        timeline.milestones.length +  
+        " milestones completed";  
+  
+}  
+  
+  
+/* =========================================================  
+   PROCESS MILESTONES  
+   ========================================================= */  
+  
+function processMilestones(  
+    habit,  
+    timeline,  
+    elapsedMs  
+) {  
+  
+    /*  
+       Milestones are cumulative.  
+  
+       Example:  
+  
+       1 week  -> 7 days from timeline start  
+       1 month -> 30 days from timeline start  
+       3 months -> 90 days from timeline start  
+    */  
+  
+    let changed =  
+        false;  
+  
+  
+    const newlyCompleted =  
+        [];  
+  
+  
+    timeline.milestones  
+        .forEach(  
+            milestone => {  
+  
+                if (  
+                    !milestone.completed &&  
+                    elapsedMs >=  
+                        milestone.durationMs  
+                ) {  
+  
+                    milestone.completed =  
+                        true;  
+  
+  
+                    milestone.completedAt =  
+                        timeline.startTime +  
+                        milestone.durationMs;  
+  
+  
+                    timeline.events.push(  
+                        {  
+  
+                            id:  
+                                createId(),  
+  
+                            type:  
+                                "milestone",  
+  
+                            title:  
+                                milestone.label +  
+                                " milestone completed",  
+  
+                            date:  
+                                milestone.completedAt  
+  
+                        }  
+                    );  
+  
+  
+                    newlyCompleted.push(  
+                        milestone  
+                    );  
+  
+  
+                    changed =  
+                        true;  
+  
+                }  
+  
+            }  
+        );  
+  
+  
+    if (!changed) {  
+        return;  
+    }  
+  
+  
+    updateHabit(  
+        habit  
+    );  
+  
+  
+    /*  
+       If multiple milestones were passed  
+       while the page was closed, celebrate  
+       the latest one only.  
+  
+       All of them are still recorded  
+       in History.  
+    */  
+  
+    const latest =  
+        newlyCompleted[  
+            newlyCompleted.length - 1  
+        ];  
+  
+  
+    if (  
+        latest &&  
+        !pendingCelebration  
+    ) {  
+  
+        pendingCelebration = {  
+  
+            habitId:  
+                habit.id,  
+  
+            milestoneId:  
+                latest.id  
+  
+        };  
+  
+  
+        showMilestoneCelebration(  
+            habit,  
+            timeline,  
+            latest  
+        );  
+  
+    }  
+  
+}  
+  
+  
+/* =========================================================  
+   CELEBRATION  
+   ========================================================= */  
+  
+function showMilestoneCelebration(  
+    habit,  
+    timeline,  
+    milestone  
+) {  
+  
+    $("completedGoal")  
+        .textContent =  
+        "✓ " +  
+        milestone.label +  
+        " completed";  
+  
+  
+    $("milestoneMessage")  
+        .textContent =  
+        "You've reached another milestone in " +  
+        habit.title +  
+        ".";  
+  
+  
+    const next =  
+        getNextMilestone(  
+            timeline  
+        );  
+  
+  
+    if (next) {  
+  
+        $("nextMilestoneMessage")  
+            .textContent =  
+            "Next milestone: " +  
+            next.label +  
+            ".";  
+  
+    } else {  
+  
+        $("nextMilestoneMessage")  
+            .textContent =  
+            "You've completed every milestone on this timeline. You can keep going or add more milestones anytime.";  
+  
+    }  
+  
+  
+    openModal(  
+        "milestoneModal"  
+    );  
+  
+}  
+  
+  
+$("milestoneContinueButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            pendingCelebration =  
+                null;  
+  
+  
+            closeModal(  
+                "milestoneModal"  
+            );  
+  
+  
+            renderDetail();  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   HISTORY  
+   ========================================================= */  
+  
+function renderHistory(  
+    habit  
+) {  
+  
+    const container =  
+        $("historyList");  
+  
+  
+    container.innerHTML =  
+        "";  
+  
+  
+    /*  
+       Newest timeline first.  
+    */  
+  
+    const timelines =  
+        [...habit.timelines]  
+            .reverse();  
+  
+  
+    timelines.forEach(  
+        (  
+            timeline,  
+            reverseIndex  
+        ) => {  
+  
+            const actualIndex =  
+                habit.timelines.length -  
+                reverseIndex;  
+  
+  
+            const group =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            group.className =  
+                "timeline-group";  
+  
+  
+            const isCurrent =  
+                timeline.id ===  
+                getCurrentTimeline(  
+                    habit  
+                ).id;  
+  
+  
+            if (isCurrent) {  
+  
+                group.classList.add(  
+                    "current"  
+                );  
+  
+            }  
+  
+  
+            const header =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            header.className =  
+                "timeline-header";  
+  
+  
+            const left =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            const label =  
+                document.createElement(  
+                    "span"  
+                );  
+  
+  
+            label.className =  
+                "small-label";  
+  
+  
+            label.textContent =  
+                isCurrent  
+                    ? "Current Timeline"  
+                    : "Previous Timeline";  
+  
+  
+            const title =  
+                document.createElement(  
+                    "h3"  
+                );  
+  
+  
+            title.textContent =  
+                "Timeline " +  
+                actualIndex;  
+  
+  
+            left.appendChild(  
+                label  
+            );  
+  
+  
+            left.appendChild(  
+                title  
+            );  
+  
+  
+            const dates =  
+                document.createElement(  
+                    "div"  
+                );  
+  
+  
+            dates.className =  
+                "timeline-date";  
+  
+  
+            dates.textContent =  
+                formatDate(  
+                    timeline.startTime  
+                );  
+  
+  
+            if (  
+                timeline.stopTime  
+            ) {  
+  
+                dates.textContent +=  
+                    " → " +  
+                    formatDate(  
+                        timeline.stopTime  
+                    );  
+  
+            }  
+  
+  
+            header.appendChild(  
+                left  
+            );  
+  
+  
+            header.appendChild(  
+                dates  
+            );  
+  
+  
+            group.appendChild(  
+                header  
+            );  
+  
+  
+            const events =  
+                [...timeline.events]  
+                    .sort(  
+                        (a, b) =>  
+                            b.date -  
+                            a.date  
+                    );  
+  
+  
+            events.forEach(  
+                event => {  
+  
+                    group.appendChild(  
+                        createHistoryRow(  
+                            event  
+                        )  
+                    );  
+  
+                }  
+            );  
+  
+  
+            container.appendChild(  
+                group  
+            );  
+  
+        }  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   HISTORY ROW  
+   ========================================================= */  
+  
+function createHistoryRow(  
+    event  
+) {  
+  
+    const row =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    row.className =  
+        "history-item";  
+  
+  
+    const icon =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    icon.className =  
+        "history-icon";  
+  
+  
+    if (  
+        event.type ===  
+        "milestone"  
+    ) {  
+  
+        icon.classList.add(  
+            "goal"  
+        );  
+  
+        icon.textContent =  
+            "★";  
+  
+    } else if (  
+        event.type ===  
+        "stop"  
+    ) {  
+  
+        icon.classList.add(  
+            "stop"  
+        );  
+  
+        icon.textContent =  
+            "■";  
+  
+    } else if (  
+        event.type ===  
+        "resume" ||  
+        event.type ===  
+        "restart"  
+    ) {  
+  
+        icon.classList.add(  
+            "restart"  
+        );  
+  
+        icon.textContent =  
+            "↻";  
+  
+    } else {  
+  
+        icon.textContent =  
+            "✓";  
+  
+    }  
+  
+  
+    const content =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    content.className =  
+        "history-content";  
+  
+  
+    const title =  
+        document.createElement(  
+            "strong"  
+        );  
+  
+  
+    title.textContent =  
+        event.title;  
+  
+  
+    const date =  
+        document.createElement(  
+            "span"  
+        );  
+  
+  
+    date.textContent =  
+        formatDate(  
+            event.date  
+        );  
+  
+  
+    content.appendChild(  
+        title  
+    );  
+  
+  
+    content.appendChild(  
+        date  
+    );  
+  
+  
+    row.appendChild(  
+        icon  
+    );  
+  
+  
+    row.appendChild(  
+        content  
+    );  
+  
+  
+    return row;  
+  
+}  
+  
+  
+/* =========================================================  
+   HABIT FORM  
+   ========================================================= */  
+  
+function openHabitForm(  
+    id = null  
+) {  
+  
+    editingHabitId =  
+        id;  
+  
+  
+    builderMilestones =  
+        [];  
+  
+  
+    if (id) {  
+  
+        const habit =  
+            getHabitById(id);  
+  
+  
+        if (!habit) {  
+            return;  
+        }  
+  
+  
+        const timeline =  
+            getCurrentTimeline(  
+                habit  
+            );  
+  
+  
+        $("formHeading")  
+            .textContent =  
+            "Edit Habit";  
+  
+  
+        $("titleInput")  
+            .value =  
+            habit.title;  
+  
+  
+        const start =  
+            new Date(  
+                timeline.startTime  
+            );  
+  
+  
+        $("dateInput")  
+            .value =  
+            localDateValue(  
+                start  
+            );  
+  
+  
+        $("timeInput")  
+            .value =  
+            localTimeValue(  
+                start  
+            );  
+  
+  
+        /*  
+           Copy milestones.  
+        */  
+  
+        builderMilestones =  
+            timeline.milestones.map(  
+                milestone => ({  
+                    ...milestone  
+                })  
+            );  
+  
+    } else {  
+  
+        $("formHeading")  
+            .textContent =  
+            "Create New Habit";  
+  
+  
+        $("titleInput")  
+            .value =  
+            "";  
+  
+  
+        const now =  
+            new Date();  
+  
+  
+        $("dateInput")  
+            .value =  
+            localDateValue(  
+                now  
+            );  
+  
+  
+        $("timeInput")  
+            .value =  
+            localTimeValue(  
+                now  
+            );  
+  
+  
+        /*  
+           Sensible default:  
+           1 Week  
+        */  
+  
+        builderMilestones = [  
+  
+            makeMilestone(  
+                PRESETS.week.label,  
+                PRESETS.week.durationMs  
+            )  
+  
+        ];  
+  
+    }  
+  
+  
+    renderBuilderMilestones();  
+  
+  
+    openModal(  
+        "habitModal"  
+    );  
+  
+  
+    setTimeout(  
+        () => {  
+  
+            $("titleInput")  
+                .focus();  
+  
+        },  
+        100  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   BUILDER PRESETS  
+   ========================================================= */  
+  
+document  
+    .querySelectorAll(  
+        ".preset-btn:not(.restart-preset-btn)"  
+    )  
+    .forEach(  
+        button => {  
+  
+            button.addEventListener(  
+                "click",  
+                () => {  
+  
+                    const preset =  
+                        PRESETS[  
+                            button.dataset.preset  
+                        ];  
+  
+  
+                    if (!preset) {  
+                        return;  
+                    }  
+  
+  
+                    builderMilestones.push(  
+  
+                        makeMilestone(  
+                            preset.label,  
+                            preset.durationMs  
+                        )  
+  
+                    );  
+  
+  
+                    builderMilestones =  
+                        normalizeMilestones(  
+                            builderMilestones  
+                        );  
+  
+  
+                    renderBuilderMilestones();  
+  
+                }  
+            );  
+  
+        }  
+    );  
+  
+  
+$("addCustomGoalButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            addCustomBuilderGoal();  
+  
+        }  
+    );  
+  
+  
+function addCustomBuilderGoal() {  
+  
+    const value =  
+        $("customGoalValue")  
+            .value;  
+  
+  
+    const unit =  
+        $("customGoalUnit")  
+            .value;  
+  
+  
+    const durationMs =  
+        customDurationToMs(  
+            value,  
+            unit  
+        );  
+  
+  
+    if (!durationMs) {  
+  
+        showToast(  
+            "Enter a valid custom milestone."  
+        );  
+  
+        return;  
+    }  
+  
+  
+    const label =  
+        formatCustomLabel(  
+            value,  
+            unit  
+        );  
+  
+  
+    builderMilestones.push(  
+  
+        makeMilestone(  
+            label,  
+            durationMs  
+        )  
+  
+    );  
+  
+  
+    builderMilestones =  
+        normalizeMilestones(  
+            builderMilestones  
+        );  
+  
+  
+    $("customGoalValue")  
+        .value =  
+        "";  
+  
+  
+    renderBuilderMilestones();  
+  
+}  
+  
+  
+/* =========================================================  
+   CUSTOM LABEL  
+   ========================================================= */  
+  
+function formatCustomLabel(  
+    value,  
+    unit  
+) {  
+  
+    const number =  
+        Number(value);  
+  
+  
+    const unitMap = {  
+  
+        days: [  
+            "Day",  
+            "Days"  
+        ],  
+  
+        weeks: [  
+            "Week",  
+            "Weeks"  
+        ],  
+  
+        months: [  
+            "Month",  
+            "Months"  
+        ],  
+  
+        years: [  
+            "Year",  
+            "Years"  
+        ]  
+  
+    };  
+  
+  
+    const words =  
+        unitMap[unit];  
+  
+  
+    return (  
+        number +  
+        " " +  
+        (  
+            number === 1  
+                ? words[0]  
+                : words[1]  
+        )  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   RENDER BUILDER  
+   ========================================================= */  
+  
+function renderBuilderMilestones() {  
+  
+    const container =  
+        $("milestoneBuilderList");  
+  
+  
+    container.innerHTML =  
+        "";  
+  
+  
+    builderMilestones =  
+        normalizeMilestones(  
+            builderMilestones  
+        );  
+  
+  
+    if (  
+        builderMilestones.length === 0  
+    ) {  
+  
+        container.innerHTML = `  
+            <div class="no-milestones">  
+                No milestones. The habit will  
+                continue indefinitely.  
+            </div>  
+        `;  
+  
+        return;  
+    }  
+  
+  
+    builderMilestones  
+        .forEach(  
+            (  
+                milestone,  
+                index  
+            ) => {  
+  
+                const row =  
+                    createBuilderRow(  
+                        milestone,  
+                        index,  
+                        "main"  
+                    );  
+  
+  
+                container.appendChild(  
+                    row  
+                );  
+  
+            }  
+        );  
+  
+}  
+  
+  
+/* =========================================================  
+   BUILDER ROW  
+   ========================================================= */  
+  
+function createBuilderRow(  
+    milestone,  
+    index,  
+    mode  
+) {  
+  
+    const row =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    row.className =  
+        "milestone-row";  
+  
+  
+    const left =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    left.className =  
+        "milestone-row-left";  
+  
+  
+    const number =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    number.className =  
+        "milestone-number";  
+  
+  
+    number.textContent =  
+        index + 1;  
+  
+  
+    const text =  
+        document.createElement(  
+            "div"  
+        );  
+  
+  
+    const strong =  
+        document.createElement(  
+            "strong"  
+        );  
+  
+  
+    strong.textContent =  
+        milestone.label;  
+  
+  
+    const small =  
+        document.createElement(  
+            "small"  
+        );  
+  
+  
+    small.textContent =  
+        "Cumulative from timeline start";  
+  
+  
+    if (  
+        milestone.completed  
+    ) {  
+  
+        small.textContent =  
+            "Completed";  
+  
+    }  
+  
+  
+    text.appendChild(  
+        strong  
+    );  
+  
+  
+    text.appendChild(  
+        small  
+    );  
+  
+  
+    left.appendChild(  
+        number  
+    );  
+  
+  
+    left.appendChild(  
+        text  
+    );  
+  
+  
+    row.appendChild(  
+        left  
+    );  
+  
+  
+    /*  
+       Completed milestones should not  
+       be removable while editing.  
+    */  
+  
+    if (  
+        !milestone.completed  
+    ) {  
+  
+        const remove =  
+            document.createElement(  
+                "button"  
+            );  
+  
+  
+        remove.type =  
+            "button";  
+  
+  
+        remove.className =  
+            "remove-goal";  
+  
+  
+        remove.textContent =  
+            "×";  
+  
+  
+        remove.title =  
+            "Remove milestone";  
+  
+  
+        remove.addEventListener(  
+            "click",  
+            () => {  
+  
+                if (  
+                    mode === "main"  
+                ) {  
+  
+                    builderMilestones =  
+                        builderMilestones.filter(  
+                            item =>  
+                                item.id !==  
+                                milestone.id  
+                        );  
+  
+  
+                    renderBuilderMilestones();  
+  
+                } else {  
+  
+                    restartMilestones =  
+                        restartMilestones.filter(  
+                            item =>  
+                                item.id !==  
+                                milestone.id  
+                        );  
+  
+  
+                    renderRestartMilestones();  
+  
+                }  
+  
+            }  
+        );  
+  
+  
+        row.appendChild(  
+            remove  
+        );  
+  
+    }  
+  
+  
+    return row;  
+  
+}  
+  
+  
+/* =========================================================  
+   SAVE HABIT  
+   ========================================================= */  
+  
+$("habitForm")  
+    .addEventListener(  
+        "submit",  
+        event => {  
+  
+            event.preventDefault();  
+  
+  
+            const title =  
+                $("titleInput")  
+                    .value  
+                    .trim();  
+  
+  
+            if (!title) {  
+  
+                showToast(  
+                    "Please enter a title."  
+                );  
+  
+                return;  
+            }  
+  
+  
+            const start =  
+                new Date(  
+                    $("dateInput").value +  
+                    "T" +  
+                    $("timeInput").value  
+                );  
+  
+  
+            if (  
+                Number.isNaN(  
+                    start.getTime()  
+                )  
+            ) {  
+  
+                showToast(  
+                    "Please choose a valid date and time."  
+                );  
+  
+                return;  
+            }  
+  
+  
+            const habits =  
+                getHabits();  
+  
+  
+            /*  
+               EDIT  
+            */  
+  
+            if (  
+                editingHabitId  
+            ) {  
+  
+                const index =  
+                    habits.findIndex(  
+                        habit =>  
+                            habit.id ===  
+                            editingHabitId  
+                    );  
+  
+  
+                if (  
+                    index === -1  
+                ) {  
+                    return;  
+                }  
+  
+  
+                const habit =  
+                    habits[index];  
+  
+  
+                const timeline =  
+                    getCurrentTimeline(  
+                        habit  
+                    );  
+  
+  
+                habit.title =  
+                    title;  
+  
+  
+                timeline.startTime =  
+                    start.getTime();  
+  
+  
+                /*  
+                   Preserve completed milestones,  
+                   and take current builder list.  
+                */  
+  
+                timeline.milestones =  
+                    normalizeMilestones(  
+                        builderMilestones  
+                    );  
+  
+  
+                habits[index] =  
+                    habit;  
+  
+  
+                saveHabits(  
+                    habits  
+                );  
+  
+  
+                showToast(  
+                    "Habit updated."  
+                );  
+  
+  
+                selectedHabitId =  
+                    habit.id;  
+  
+            }  
+  
+            /*  
+               CREATE  
+            */  
+  
+            else {  
+  
+                const timelineId =  
+                    createId();  
+  
+  
+                const habit = {  
+  
+                    id:  
+                        createId(),  
+  
+                    title:  
+                        title,  
+  
+                    status:  
+                        "active",  
+  
+                    createdAt:  
+                        Date.now(),  
+  
+                    timelines: [  
+  
+                        {  
+  
+                            id:  
+                                timelineId,  
+  
+                            startTime:  
+                                start.getTime(),  
+  
+                            stopTime:  
+                                null,  
+  
+                            milestones:  
+                                normalizeMilestones(  
+                                    builderMilestones  
+                                ),  
+  
+                            events: [  
+  
+                                {  
+  
+                                    id:  
+                                        createId(),  
+  
+                                    type:  
+                                        "start",  
+  
+                                    title:  
+                                        "Journey started",  
+  
+                                    date:  
+                                        start.getTime()  
+  
+                                }  
+  
+                            ]  
+  
+                        }  
+  
+                    ]  
+  
+                };  
+  
+  
+                habits.push(  
+                    habit  
+                );  
+  
+  
+                saveHabits(  
+                    habits  
+                );  
+  
+  
+                selectedHabitId =  
+                    habit.id;  
+  
+  
+                showToast(  
+                    "New habit created."  
+                );  
+  
+            }  
+  
+  
+            editingHabitId =  
+                null;  
+  
+  
+            closeModal(  
+                "habitModal"  
+            );  
+  
+  
+            showHabit(  
+                selectedHabitId  
+            );  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   STOP  
+   ========================================================= */  
+  
+$("stopButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            openModal(  
+                "stopModal"  
+            );  
+  
+        }  
+    );  
+  
+  
+$("confirmStopButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            stopSelectedHabit();  
+  
+  
+            closeModal(  
+                "stopModal"  
+            );  
+  
+        }  
+    );  
+  
+  
+function stopSelectedHabit() {  
+  
+    if (  
+        !selectedHabitId  
+    ) {  
+        return;  
+    }  
+  
+  
+    const habit =  
+        getHabitById(  
+            selectedHabitId  
+        );  
+  
+  
+    if (  
+        !habit ||  
+        habit.status ===  
+            "stopped"  
+    ) {  
+        return;  
+    }  
+  
+  
+    const timeline =  
+        getCurrentTimeline(  
+            habit  
+        );  
+  
+  
+    const now =  
+        Date.now();  
+  
+  
+    habit.status =  
+        "stopped";  
+  
+  
+    timeline.stopTime =  
+        now;  
+  
+  
+    timeline.events.push(  
+        {  
+  
+            id:  
+                createId(),  
+  
+            type:  
+                "stop",  
+  
+            title:  
+                "Journey stopped",  
+  
+            date:  
+                now  
+  
+        }  
+    );  
+  
+  
+    updateHabit(  
+        habit  
+    );  
+  
+  
+    renderDetail();  
+  
+  
+    showToast(  
+        "Journey stopped. You can restart anytime."  
+    );  
+  
+}  
+  
+  
+/* =========================================================  
+   RESTART  
+   ========================================================= */  
+  
+$("restartButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            openModal(  
+                "restartModal"  
+            );  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   RESUME PREVIOUS TIMELINE  
+   ========================================================= */  
+  
+$("resumeTimelineButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            const habit =  
+                getHabitById(  
+                    selectedHabitId  
+                );  
+  
+  
+            if (  
+                !habit ||  
+                habit.status !==  
+                    "stopped"  
+            ) {  
+                return;  
+            }  
+  
+  
+            const timeline =  
+                getCurrentTimeline(  
+                    habit  
+                );  
+  
+  
+            const now =  
+                Date.now();  
+  
+  
+            /*  
+               Important:  
+  
+               Resume Previous Timeline means  
+               the stop did not really interrupt  
+               the real-world habit.  
+  
+               Therefore:  
+               - original start time stays  
+               - stopped interval still counts  
+               - milestones remain cumulative  
+            */  
+  
+            timeline.stopTime =  
+                null;  
+  
+  
+            timeline.events.push(  
+                {  
+  
+                    id:  
+                        createId(),  
+  
+                    type:  
+                        "resume",  
+  
+                    title:  
+                        "Previous timeline resumed",  
+  
+                    date:  
+                        now  
+  
+                }  
+            );  
+  
+  
+            habit.status =  
+                "active";  
+  
+  
+            updateHabit(  
+                habit  
+            );  
+  
+  
+            closeModal(  
+                "restartModal"  
+            );  
+  
+  
+            renderDetail();  
+  
+  
+            showToast(  
+                "Previous timeline resumed."  
+            );  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   START NEW TIMELINE  
+   ========================================================= */  
+  
+$("newTimelineButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            closeModal(  
+                "restartModal"  
+            );  
+  
+  
+            const now =  
+                new Date();  
+  
+  
+            $("restartDateInput")  
+                .value =  
+                localDateValue(  
+                    now  
+                );  
+  
+  
+            $("restartTimeInput")  
+                .value =  
+                localTimeValue(  
+                    now  
+                );  
+  
+  
+            restartMilestones = [  
+  
+                makeMilestone(  
+                    PRESETS.week.label,  
+                    PRESETS.week.durationMs  
+                )  
+  
+            ];  
+  
+  
+            renderRestartMilestones();  
+  
+  
+            openModal(  
+                "newTimelineModal"  
+            );  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   RESTART PRESETS  
+   ========================================================= */  
+  
+document  
+    .querySelectorAll(  
+        ".restart-preset-btn"  
+    )  
+    .forEach(  
+        button => {  
+  
+            button.addEventListener(  
+                "click",  
+                () => {  
+  
+                    const preset =  
+                        PRESETS[  
+                            button.dataset.preset  
+                        ];  
+  
+  
+                    if (!preset) {  
+                        return;  
+                    }  
+  
+  
+                    restartMilestones.push(  
+  
+                        makeMilestone(  
+                            preset.label,  
+                            preset.durationMs  
+                        )  
+  
+                    );  
+  
+  
+                    restartMilestones =  
+                        normalizeMilestones(  
+                            restartMilestones  
+                        );  
+  
+  
+                    renderRestartMilestones();  
+  
+                }  
+            );  
+  
+        }  
+    );  
+  
+  
+$("restartAddCustomButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            const value =  
+                $("restartCustomValue")  
+                    .value;  
+  
+  
+            const unit =  
+                $("restartCustomUnit")  
+                    .value;  
+  
+  
+            const durationMs =  
+                customDurationToMs(  
+                    value,  
+                    unit  
+                );  
+  
+  
+            if (!durationMs) {  
+  
+                showToast(  
+                    "Enter a valid custom milestone."  
+                );  
+  
+                return;  
+            }  
+  
+  
+            restartMilestones.push(  
+  
+                makeMilestone(  
+                    formatCustomLabel(  
+                        value,  
+                        unit  
+                    ),  
+                    durationMs  
+                )  
+  
+            );  
+  
+  
+            restartMilestones =  
+                normalizeMilestones(  
+                    restartMilestones  
+                );  
+  
+  
+            $("restartCustomValue")  
+                .value =  
+                "";  
+  
+  
+            renderRestartMilestones();  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   RENDER RESTART MILESTONES  
+   ========================================================= */  
+  
+function renderRestartMilestones() {  
+  
+    const container =  
+        $("restartMilestoneList");  
+  
+  
+    container.innerHTML =  
+        "";  
+  
+  
+    restartMilestones =  
+        normalizeMilestones(  
+            restartMilestones  
+        );  
+  
+  
+    if (  
+        restartMilestones.length === 0  
+    ) {  
+  
+        container.innerHTML = `  
+            <div class="no-milestones">  
+                No milestones. The new timeline  
+                will continue indefinitely.  
+            </div>  
+        `;  
+  
+        return;  
+    }  
+  
+  
+    restartMilestones  
+        .forEach(  
+            (  
+                milestone,  
+                index  
+            ) => {  
+  
+                container.appendChild(  
+  
+                    createBuilderRow(  
+                        milestone,  
+                        index,  
+                        "restart"  
+                    )  
+  
+                );  
+  
+            }  
+        );  
+  
+}  
+  
+  
+/* =========================================================  
+   CREATE NEW TIMELINE  
+   ========================================================= */  
+  
+$("newTimelineForm")  
+    .addEventListener(  
+        "submit",  
+        event => {  
+  
+            event.preventDefault();  
+  
+  
+            const habit =  
+                getHabitById(  
+                    selectedHabitId  
+                );  
+  
+  
+            if (  
+                !habit ||  
+                habit.status !==  
+                    "stopped"  
+            ) {  
+                return;  
+            }  
+  
+  
+            const start =  
+                new Date(  
+                    $("restartDateInput").value +  
+                    "T" +  
+                    $("restartTimeInput").value  
+                );  
+  
+  
+            if (  
+                Number.isNaN(  
+                    start.getTime()  
+                )  
+            ) {  
+  
+                showToast(  
+                    "Please choose a valid start date and time."  
+                );  
+  
+                return;  
+            }  
+  
+  
+            /*  
+               Previous timeline remains untouched  
+               and stays in History.  
+  
+               New timeline starts from zero.  
+            */  
+  
+            const newTimeline = {  
+  
+                id:  
+                    createId(),  
+  
+                startTime:  
+                    start.getTime(),  
+  
+                stopTime:  
+                    null,  
+  
+                milestones:  
+                    normalizeMilestones(  
+                        restartMilestones  
+                    ),  
+  
+                events: [  
+  
+                    {  
+  
+                        id:  
+                            createId(),  
+  
+                        type:  
+                            "restart",  
+  
+                        title:  
+                            "New timeline started",  
+  
+                        date:  
+                            start.getTime()  
+  
+                    }  
+  
+                ]  
+  
+            };  
+  
+  
+            habit.timelines.push(  
+                newTimeline  
+            );  
+  
+  
+            habit.status =  
+                "active";  
+  
+  
+            updateHabit(  
+                habit  
+            );  
+  
+  
+            closeModal(  
+                "newTimelineModal"  
+            );  
+  
+  
+            renderDetail();  
+  
+  
+            showToast(  
+                "A new timeline has started."  
+            );  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   DELETE  
+   ========================================================= */  
+  
+$("deleteButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            openModal(  
+                "deleteModal"  
+            );  
+  
+        }  
+    );  
+  
+  
+$("confirmDeleteButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            if (  
+                !selectedHabitId  
+            ) {  
+                return;  
+            }  
+  
+  
+            let habits =  
+                getHabits();  
+  
+  
+            habits =  
+                habits.filter(  
+                    habit =>  
+                        habit.id !==  
+                        selectedHabitId  
+                );  
+  
+  
+            saveHabits(  
+                habits  
+            );  
+  
+  
+            selectedHabitId =  
+                null;  
+  
+  
+            closeModal(  
+                "deleteModal"  
+            );  
+  
+  
+            showDashboard();  
+  
+  
+            showToast(  
+                "Habit deleted."  
+            );  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   MODALS  
+   ========================================================= */  
+  
+function openModal(id) {  
+  
+    $(id)  
+        .classList  
+        .remove("hidden");  
+  
+}  
+  
+  
+function closeModal(id) {  
+  
+    $(id)  
+        .classList  
+        .add("hidden");  
+  
+}  
+  
+  
+document  
+    .querySelectorAll(  
+        "[data-close]"  
+    )  
+    .forEach(  
+        button => {  
+  
+            button.addEventListener(  
+                "click",  
+                () => {  
+  
+                    closeModal(  
+                        button.dataset.close  
+                    );  
+  
+                }  
+            );  
+  
+        }  
+    );  
+  
+  
+document  
+    .querySelectorAll(  
+        ".overlay"  
+    )  
+    .forEach(  
+        overlay => {  
+  
+            overlay.addEventListener(  
+                "click",  
+                event => {  
+  
+                    if (  
+                        event.target ===  
+                        overlay  
+                    ) {  
+  
+                        overlay  
+                            .classList  
+                            .add("hidden");  
+  
+                    }  
+  
+                }  
+            );  
+  
+        }  
+    );  
+  
+  
+document.addEventListener(  
+    "keydown",  
+    event => {  
+  
+        if (  
+            event.key !==  
+            "Escape"  
+        ) {  
+            return;  
+        }  
+  
+  
+        document  
+            .querySelectorAll(  
+                ".overlay"  
+            )  
+            .forEach(  
+                overlay => {  
+  
+                    overlay  
+                        .classList  
+                        .add("hidden");  
+  
+                }  
+            );  
+  
+    }  
+);  
+  
+  
+/* =========================================================  
+   NAVIGATION  
+   ========================================================= */  
+  
+$("brandButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            showDashboard();  
+  
+        }  
+    );  
+  
+  
+$("backButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            showDashboard();  
+  
+        }  
+    );  
+  
+  
+$("newHabitButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            openHabitForm();  
+  
+        }  
+    );  
+  
+  
+$("emptyCreateButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            openHabitForm();  
+  
+        }  
+    );  
+  
+  
+$("editButton")  
+    .addEventListener(  
+        "click",  
+        () => {  
+  
+            if (  
+                selectedHabitId  
+            ) {  
+  
+                openHabitForm(  
+                    selectedHabitId  
+                );  
+  
+            }  
+  
+        }  
+    );  
+  
+  
+/* =========================================================  
+   TOAST  
+   ========================================================= */  
+  
+let toastTimer =  
+    null;  
+  
+  
+function showToast(  
+    message  
+) {  
+  
+    const toast =  
+        $("toast");  
+  
+  
+    toast.textContent =  
+        message;  
+  
+  
+    toast.classList.add(  
+        "show"  
+    );  
+  
+  
+    clearTimeout(  
+        toastTimer  
+    );  
+  
+  
+    toastTimer =  
+        setTimeout(  
+            () => {  
+  
+                toast  
+                    .classList  
+                    .remove("show");  
+  
+            },  
+            2400  
+        );  
+  
+}  
+  
+  
+/* =========================================================  
+   INITIALIZE  
+   ========================================================= */  
+  
+migrateOldData();  
+  
+showDashboard();  
+  
+  
+/*  
+   Update once per second.  
+  
+   Dashboard cards and current detail  
+   stay live.  
+*/  
+  
+setInterval(  
+    () => {  
+  
+        if (  
+            selectedHabitId &&  
+            !$("detailView")  
+                .classList  
+                .contains("hidden")  
+        ) {  
+  
+            renderDetail();  
+  
+        } else if (  
+            !$("dashboardView")  
+                .classList  
+                .contains("hidden")  
+        ) {  
+  
+            renderDashboard();  
+  
+        }  
+  
+    },  
+    1000  
+);  
+  
+</script>  
+  
+</body>  
+</html>  
