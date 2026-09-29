@@ -451,6 +451,24 @@ button {
         box-shadow .2s ease;  
 }  
   
+.habit-preview.sort-pressing {
+    transform: scale(.985);
+}
+
+.habit-preview.sort-dragging {
+    opacity: .72;
+    transform: scale(.985);
+    box-shadow: 0 26px 70px rgba(33,67,46,.20);
+    z-index: 20;
+    cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.habits-grid.sorting-active .habit-preview:not(.sort-dragging) {
+    transition: transform .16s ease, box-shadow .16s ease;
+}
+
 .habit-preview:hover {  
     transform:  
         translateY(-3px);  
@@ -668,39 +686,6 @@ button {
     color: var(--muted);  
 }  
   
-.detail-header-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.pin-button {
-    min-width: 82px;
-    height: 42px;
-    padding: 0 13px;
-    border: 1px solid #dce4de;
-    border-radius: 12px;
-    color: var(--muted);
-    background: #f6f8f6;
-    font-size: 12px;
-    font-weight: 750;
-    white-space: nowrap;
-    transition: transform .15s ease, color .15s ease, border-color .15s ease, background .15s ease;
-}
-
-.pin-button:hover {
-    transform: translateY(-1px);
-    color: var(--green);
-    border-color: var(--green);
-    background: var(--green-pale);
-}
-
-.pin-button.pinned {
-    color: var(--green-dark);
-    border-color: rgba(49,132,91,.25);
-    background: var(--green-soft);
-}
-
 .delete-icon {  
     width: 42px;  
     height: 42px;  
@@ -1269,70 +1254,6 @@ select:focus {
         rgba(49,132,91,.1);  
 }  
   
-.picker-input-wrap {
-    position: relative;
-}
-
-.picker-input-wrap > input[type="text"] {
-    padding-right: 52px;
-}
-
-.picker-button {
-    position: absolute;
-    top: 50%;
-    right: 7px;
-    width: 38px;
-    height: 38px;
-    transform: translateY(-50%);
-    border: 0;
-    border-radius: 9px;
-    color: var(--green-dark);
-    background: var(--green-soft);
-    font-size: 18px;
-    line-height: 1;
-}
-
-.picker-button:hover {
-    background: var(--green-pale);
-}
-
-.native-picker-proxy {
-    position: absolute;
-    right: 7px;
-    top: 50%;
-    width: 38px;
-    height: 38px;
-    transform: translateY(-50%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.field-hint {
-    margin-top: 7px;
-    color: var(--muted);
-    font-size: 11px;
-    line-height: 1.4;
-}
-
-.preview-badges {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 7px;
-}
-
-.pinned-label {
-    display: inline-flex;
-    padding: 6px 10px;
-    border-radius: 100px;
-    color: var(--green-dark);
-    background: var(--green-soft);
-    font-size: 10px;
-    font-weight: 760;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-}
-
 .form-row {  
     display: grid;  
   
@@ -2063,28 +1984,14 @@ select:focus {
                     </div>  
   
   
-                    <div class="detail-header-actions">
-
-                        <button
-                            id="pinButton"
-                            class="pin-button"
-                            type="button"
-                            title="Pin habit"
-                            aria-label="Pin habit"
-                        >
-                            ♡ Pin
-                        </button>
-
-                        <button  
-                            id="deleteButton"  
-                            class="delete-icon"  
-                            title="Delete habit"  
-                            aria-label="Delete habit"  
-                        >  
-                            ⋯  
-                        </button>
-
-                    </div>
+                    <button  
+                        id="deleteButton"  
+                        class="delete-icon"  
+                        title="Delete habit"  
+                        aria-label="Delete habit"  
+                    >  
+                        ⋯  
+                    </button>  
   
                 </div>  
   
@@ -2391,39 +2298,11 @@ select:focus {
                         Start Date  
                     </label>  
   
-                    <div class="picker-input-wrap">
-                        <input
-                            id="dateInput"
-                            type="text"
-                            inputmode="text"
-                            autocomplete="off"
-                            placeholder="MM/DD/YYYY"
-                            aria-describedby="dateInputHint"
-                            required
-                        >
-
-                        <button
-                            id="datePickerButton"
-                            class="picker-button"
-                            type="button"
-                            title="Open calendar"
-                            aria-label="Open calendar"
-                        >
-                            ▣
-                        </button>
-
-                        <input
-                            id="dateNativePicker"
-                            class="native-picker-proxy"
-                            type="date"
-                            tabindex="-1"
-                            aria-hidden="true"
-                        >
-                    </div>
-
-                    <div id="dateInputHint" class="field-hint">
-                        Type a date or tap the calendar.
-                    </div>  
+                    <input  
+                        id="dateInput"  
+                        type="date"  
+                        required  
+                    >  
   
                 </div>  
   
@@ -2434,40 +2313,11 @@ select:focus {
                         Start Time  
                     </label>  
   
-                    <div class="picker-input-wrap">
-                        <input
-                            id="timeInput"
-                            type="text"
-                            inputmode="numeric"
-                            autocomplete="off"
-                            placeholder="HH:MM"
-                            aria-describedby="timeInputHint"
-                            required
-                        >
-
-                        <button
-                            id="timePickerButton"
-                            class="picker-button"
-                            type="button"
-                            title="Open time picker"
-                            aria-label="Open time picker"
-                        >
-                            ◷
-                        </button>
-
-                        <input
-                            id="timeNativePicker"
-                            class="native-picker-proxy"
-                            type="time"
-                            step="60"
-                            tabindex="-1"
-                            aria-hidden="true"
-                        >
-                    </div>
-
-                    <div id="timeInputHint" class="field-hint">
-                        Type a time or tap the clock.
-                    </div>  
+                    <input  
+                        id="timeInput"  
+                        type="time"  
+                        required  
+                    >  
   
                 </div>  
   
@@ -4108,13 +3958,8 @@ function renderDashboard() {
         "";  
   
   
-    const habits =
-        getHabits()
-            .sort((a, b) => {
-                if (a.pinned && !b.pinned) return -1;
-                if (!a.pinned && b.pinned) return 1;
-                return 0;
-            });
+    const habits =  
+        getHabits();  
   
   
     habits.forEach(  
@@ -4237,34 +4082,9 @@ function renderDashboard() {
                 );  
   
   
-            const badgeRow =
-                document.createElement("div");
-
-            badgeRow.className =
-                "preview-badges";
-
-            if (habit.pinned) {
-                const pinnedLabel =
-                    document.createElement("span");
-
-                pinnedLabel.className =
-                    "pinned-label";
-
-                pinnedLabel.textContent =
-                    "● Pinned";
-
-                badgeRow.appendChild(
-                    pinnedLabel
-                );
-            }
-
-            badgeRow.appendChild(
-                badge
-            );
-
-            top.appendChild(
-                badgeRow
-            );
+            top.appendChild(  
+                badge  
+            );  
   
   
             top.appendChild(  
@@ -4511,38 +4331,7 @@ function renderDetail() {
   
     $("detailTitle")  
         .textContent =  
-        habit.title;
-
-
-    const pinButton =
-        $("pinButton");
-
-
-    if (habit.pinned) {
-        pinButton.textContent =
-            "● Pinned";
-        pinButton.classList.add(
-            "pinned"
-        );
-        pinButton.title =
-            "Unpin habit";
-        pinButton.setAttribute(
-            "aria-label",
-            "Unpin habit"
-        );
-    } else {
-        pinButton.textContent =
-            "♡ Pin";
-        pinButton.classList.remove(
-            "pinned"
-        );
-        pinButton.title =
-            "Pin habit";
-        pinButton.setAttribute(
-            "aria-label",
-            "Pin habit"
-        );
-    }
+        habit.title;  
   
   
     $("detailStarted")  
@@ -5387,213 +5176,6 @@ function createHistoryRow(
 }  
   
   
-/* =========================================================
-   FRIENDLY DATE / TIME INPUTS
-   Visible fields allow typing. The buttons open the browser's
-   native calendar / time picker (wheel-style on supported phones).
-   ========================================================= */
-
-function pad2(value) {
-    return String(value).padStart(2, "0");
-}
-
-function displayDateValue(date) {
-    return (
-        pad2(date.getMonth() + 1) +
-        "/" +
-        pad2(date.getDate()) +
-        "/" +
-        date.getFullYear()
-    );
-}
-
-function displayTimeValue(date) {
-    return (
-        pad2(date.getHours()) +
-        ":" +
-        pad2(date.getMinutes())
-    );
-}
-
-function setHabitDateTimeInputs(date) {
-    $("dateInput").value =
-        displayDateValue(date);
-
-    $("timeInput").value =
-        displayTimeValue(date);
-
-    $("dateNativePicker").value =
-        localDateValue(date);
-
-    $("timeNativePicker").value =
-        localTimeValue(date);
-}
-
-function parseTypedDate(value) {
-    const text = value.trim();
-
-    let match = text.match(
-        /^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/
-    );
-
-    if (match) {
-        const month = Number(match[1]);
-        const day = Number(match[2]);
-        const year = Number(match[3]);
-        const date = new Date(year, month - 1, day);
-
-        if (
-            date.getFullYear() === year &&
-            date.getMonth() === month - 1 &&
-            date.getDate() === day
-        ) {
-            return { year, month, day };
-        }
-    }
-
-    match = text.match(
-        /^(\d{4})-(\d{1,2})-(\d{1,2})$/
-    );
-
-    if (match) {
-        const year = Number(match[1]);
-        const month = Number(match[2]);
-        const day = Number(match[3]);
-        const date = new Date(year, month - 1, day);
-
-        if (
-            date.getFullYear() === year &&
-            date.getMonth() === month - 1 &&
-            date.getDate() === day
-        ) {
-            return { year, month, day };
-        }
-    }
-
-    return null;
-}
-
-function parseTypedTime(value) {
-    const text = value.trim().toLowerCase();
-
-    let match = text.match(
-        /^(\d{1,2}):(\d{2})\s*(am|pm)?$/
-    );
-
-    if (!match) {
-        return null;
-    }
-
-    let hour = Number(match[1]);
-    const minute = Number(match[2]);
-    const suffix = match[3];
-
-    if (minute < 0 || minute > 59) {
-        return null;
-    }
-
-    if (suffix) {
-        if (hour < 1 || hour > 12) {
-            return null;
-        }
-        if (suffix === "pm" && hour !== 12) hour += 12;
-        if (suffix === "am" && hour === 12) hour = 0;
-    } else if (hour < 0 || hour > 23) {
-        return null;
-    }
-
-    return { hour, minute };
-}
-
-function parseHabitDateTimeInputs() {
-    const datePart =
-        parseTypedDate($("dateInput").value);
-
-    const timePart =
-        parseTypedTime($("timeInput").value);
-
-    if (!datePart || !timePart) {
-        return new Date(NaN);
-    }
-
-    return new Date(
-        datePart.year,
-        datePart.month - 1,
-        datePart.day,
-        timePart.hour,
-        timePart.minute,
-        0,
-        0
-    );
-}
-
-function openNativePicker(input) {
-    if (typeof input.showPicker === "function") {
-        try {
-            input.showPicker();
-            return;
-        } catch (error) {
-            /* Fall through to click for browsers that block showPicker. */
-        }
-    }
-
-    input.focus();
-    input.click();
-}
-
-$("datePickerButton").addEventListener("click", () => {
-    const parsed = parseTypedDate($("dateInput").value);
-    if (parsed) {
-        $("dateNativePicker").value =
-            parsed.year + "-" + pad2(parsed.month) + "-" + pad2(parsed.day);
-    }
-    openNativePicker($("dateNativePicker"));
-});
-
-$("timePickerButton").addEventListener("click", () => {
-    const parsed = parseTypedTime($("timeInput").value);
-    if (parsed) {
-        $("timeNativePicker").value =
-            pad2(parsed.hour) + ":" + pad2(parsed.minute);
-    }
-    openNativePicker($("timeNativePicker"));
-});
-
-$("dateNativePicker").addEventListener("change", event => {
-    const value = event.target.value;
-    if (!value) return;
-
-    const parts = value.split("-");
-    $("dateInput").value =
-        parts[1] + "/" + parts[2] + "/" + parts[0];
-});
-
-$("timeNativePicker").addEventListener("change", event => {
-    if (!event.target.value) return;
-    $("timeInput").value =
-        event.target.value.slice(0, 5);
-});
-
-$("dateInput").addEventListener("blur", () => {
-    const parsed = parseTypedDate($("dateInput").value);
-    if (!parsed) return;
-
-    const date = new Date(parsed.year, parsed.month - 1, parsed.day);
-    $("dateInput").value = displayDateValue(date);
-    $("dateNativePicker").value = localDateValue(date);
-});
-
-$("timeInput").addEventListener("blur", () => {
-    const parsed = parseTypedTime($("timeInput").value);
-    if (!parsed) return;
-
-    $("timeInput").value =
-        pad2(parsed.hour) + ":" + pad2(parsed.minute);
-    $("timeNativePicker").value =
-        pad2(parsed.hour) + ":" + pad2(parsed.minute);
-});
-
-
 /* =========================================================  
    HABIT FORM  
    ========================================================= */  
@@ -5643,9 +5225,18 @@ function openHabitForm(
             );  
   
   
-        setHabitDateTimeInputs(
-            start
-        );
+        $("dateInput")  
+            .value =  
+            localDateValue(  
+                start  
+            );  
+  
+  
+        $("timeInput")  
+            .value =  
+            localTimeValue(  
+                start  
+            );  
   
   
         /*  
@@ -5675,9 +5266,18 @@ function openHabitForm(
             new Date();  
   
   
-        setHabitDateTimeInputs(
-            now
-        );
+        $("dateInput")  
+            .value =  
+            localDateValue(  
+                now  
+            );  
+  
+  
+        $("timeInput")  
+            .value =  
+            localTimeValue(  
+                now  
+            );  
   
   
         /*  
@@ -6169,8 +5769,12 @@ $("habitForm")
             }  
   
   
-            const start =
-                parseHabitDateTimeInputs();
+            const start =  
+                new Date(  
+                    $("dateInput").value +  
+                    "T" +  
+                    $("timeInput").value  
+                );  
   
   
             if (  
@@ -6284,10 +5888,7 @@ $("habitForm")
                         "active",  
   
                     createdAt:  
-                        Date.now(),
-
-                    pinned:
-                        false,  
+                        Date.now(),  
   
                     timelines: [  
   
@@ -6942,48 +6543,6 @@ $("newTimelineForm")
     );  
   
   
-/* =========================================================
-   PIN HABIT
-   Only one habit can be pinned at a time.
-   ========================================================= */
-
-$("pinButton")
-    .addEventListener(
-        "click",
-        () => {
-            if (!selectedHabitId) return;
-
-            const habits =
-                getHabits();
-
-            const selected =
-                habits.find(
-                    habit =>
-                        habit.id === selectedHabitId
-                );
-
-            if (!selected) return;
-
-            if (selected.pinned) {
-                selected.pinned = false;
-                showToast("Habit unpinned.");
-            } else {
-                habits.forEach(
-                    habit => {
-                        habit.pinned = false;
-                    }
-                );
-
-                selected.pinned = true;
-                showToast("Habit pinned to the top.");
-            }
-
-            saveHabits(habits);
-            renderDetail();
-        }
-    );
-
-
 /* =========================================================  
    DELETE  
    ========================================================= */  
